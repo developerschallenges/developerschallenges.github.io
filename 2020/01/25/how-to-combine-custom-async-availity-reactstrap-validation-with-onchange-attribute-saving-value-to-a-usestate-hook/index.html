@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>How to combine Custom / Async Availity reactstrap Validation with onChange attribute saving value to a useState Hook? | Developer&#39;s Challenges</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="If you choose to save all form inputs with useState Hooks while using async validation, you will face this issue. Here is how to avoid multiple api calls and weird validation behaviors.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to combine Custom &#x2F; Async Availity reactstrap Validation with onChange attribute saving value to a useState Hook?">
+<meta property="og:url" content="https://developerschallenges.com/2020/01/25/how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/">
+<meta property="og:site_name" content="Developer&#39;s Challenges">
+<meta property="og:description" content="If you choose to save all form inputs with useState Hooks while using async validation, you will face this issue. Here is how to avoid multiple api calls and weird validation behaviors.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2020-01-25-how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/hero.png">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2020-01-25-how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/the_issue.gif">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2020-01-25-how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/the_fix.gif">
+<meta property="article:published_time" content="2020-01-24T23:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-11T08:21:03.456Z">
+<meta property="article:author" content="Dalibor Mesarić">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="hooks">
+<meta property="article:tag" content="validation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developerschallenges.com/images/posts/2020-01-25-how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/hero.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#3b8dbd"/>
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="application-name" content="How to combine Custom / Async Availity reactstrap Validation with onChange attribute saving value to a useState Hook? | Developer&#39;s Challenges"/>
+  <meta name="msapplication-square70x70logo" content="/ms-icon-70x70.png"/>
+  <meta name="msapplication-square150x150logo" content="/ms-icon-150x150.png"/>
+  <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png"/>
+  <meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=5; cycle=1"/>
+	<meta name="theme-color" content="#3b8dbd">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+
+  
+<!-- Application Insights -->
+<script type="text/javascript">
+    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+    {
+        instrumentationKey:"2d3346ce-4168-4fbe-b4d9-8953a19cb9fa"
+    }
+    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+<!-- End Application Insights -->
+
+    
+
+  
+
+  
+    <link href='//fonts.googleapis.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/">Developer&#39;s Challenges</a>
+          </h1>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Blog</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/projects">Projects</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://developerschallenges.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-content">
+              
+  <article id="post-2020-01-25-how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      How to combine Custom / Async Availity reactstrap Validation with onChange attribute saving value to a useState Hook?
+    </h1>
+  
+
+        </header>
+      
+	  
+      <p class="article-byline">
+        <a href="/2020/01/25/how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/" class="article-date">
+  <time datetime="2020-01-24T23:00:00.000Z" itemprop="datePublished">2020-01-25</time>
+</a>
+      </p>
+	  
+      <div class="article-entry" itemprop="articleBody">
+        <img src="/images/posts/2020-01-25-how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/hero.png">
+
+<p>If you choose to save all form inputs with <code>useState</code> Hooks while using async validation, you will face this issue. Here is how to avoid multiple api calls and weird validation behaviors.</p>
+<a id="more"></a>
+
+<hr>
+<h2 id="1-Setup"><a href="#1-Setup" class="headerlink" title="1. Setup"></a>1. Setup</h2><p><a target="_blank" rel="noopener" href="https://github.com/dalibormesaric/test-react-validation">Here</a> is the repository containing the solution, but I described the required setup steps in this article as well.</p>
+<p>I re-created the issue we faced at work by generating both frontend and backend from template generators. For the frontend I used <a target="_blank" rel="noopener" href="https://create-react-app.dev/">Create React App</a> with typescript and for the backend I used <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio-code">ASP.NET Core webapi template</a>.</p>
+<p>Backend is not really important here, but we use this stack so it was easier to reason about how everything works.</p>
+<p>For a quick setup, just create an empty folder and run the following commands</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app test-react-validation --template typescript</span><br><span class="line">dotnet new webapi -n test-react-validation-backend</span><br><span class="line"></span><br><span class="line">cd test-react-validation</span><br><span class="line"></span><br><span class="line">npm install --save reactstrap react react-dom</span><br><span class="line">npm install --save @types/reactstrap</span><br><span class="line">npm install --save availity-reactstrap-validation react react-dom</span><br><span class="line">npm install --save lodash</span><br><span class="line">npm install --save @types/lodash</span><br></pre></td></tr></table></figure>
+
+<h3 id="Frontend-setup"><a href="#Frontend-setup" class="headerlink" title="Frontend setup"></a>Frontend setup</h3><p>Since <a target="_blank" rel="noopener" href="https://availity.github.io/availity-reactstrap-validation/">Availity reactstrap Validation</a> doesn’t have types npm package, I had to modify <code>react-app-env.d.ts</code> with</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> &quot;availity-reactstrap-validation&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>I created new file for the component as <code>src/MyForm/MyForm.tsx</code> with the following code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; FC, useState &#125; from &quot;react&quot;;</span><br><span class="line">import &#123; AvForm, AvField &#125; from &#39;availity-reactstrap-validation&#39;;</span><br><span class="line">import &#123; Button &#125; from &quot;reactstrap&quot;;</span><br><span class="line">import debounce from &quot;lodash&#x2F;debounce&quot;;</span><br><span class="line"></span><br><span class="line">interface IWeatherForecast &#123;</span><br><span class="line">    summary: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export const MyForm: FC &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    const [name, setName] &#x3D; useState&lt;string&gt;(&quot;&quot;);</span><br><span class="line">    const [weatherSummary, setWeatherSummary] &#x3D; useState&lt;string&gt;(&quot;&quot;);</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;AvForm&gt;</span><br><span class="line">                &lt;AvField name&#x3D;&quot;name&quot; label&#x3D;&quot;Name&quot; required onChange&#x3D;&#123;(e: React.ChangeEvent&lt;HTMLInputElement&gt;) &#x3D;&gt; &#123; setName(e.target.value) &#125;&#125; &#x2F;&gt;</span><br><span class="line">                &lt;AvField name&#x3D;&quot;async&quot; label&#x3D;&quot;Async Validation (enter &#39;Warm&#39;)&quot; type&#x3D;&quot;text&quot; validate&#x3D;&#123;&#123;async: validate&#125;&#125; onChange&#x3D;&#123;(e: React.ChangeEvent&lt;HTMLInputElement&gt;) &#x3D;&gt; &#123; setWeatherSummary(e.target.value) &#125;&#125; &#x2F;&gt;</span><br><span class="line">                &lt;Button color&#x3D;&quot;primary&quot;&gt;Submit&lt;&#x2F;Button&gt;</span><br><span class="line">            &lt;&#x2F;AvForm&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>And I changed <code>App.tsx</code> to contain only the <code>MyForm</code> component</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import React from &#39;react&#39;;</span><br><span class="line">import logo from &#39;.&#x2F;logo.svg&#39;;</span><br><span class="line">import &#39;.&#x2F;App.css&#39;;</span><br><span class="line">import &#123; MyForm &#125; from &#39;.&#x2F;MyForm&#x2F;MyForm&#39;;</span><br><span class="line"></span><br><span class="line">const App: React.FC &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;MyForm &#x2F;&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<p>Of course, the code will not compile at this point because the implementation of the <code>validate</code> method is missing.</p>
+<p>To start the frontend project, in the project root use the command</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<h3 id="Backend-setup"><a href="#Backend-setup" class="headerlink" title="Backend setup"></a>Backend setup</h3><p>Backend app required some modifications to enable CORS based on the following <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/57604682/how-to-how-to-fix-no-access-control-allow-origin-header-is-present-on-the-req/57604855#57604855">Stack Overflow answer</a>.</p>
+<p>In <code>Startup.cs</code> you need to add the following to <code>ConfigurationServices</code> method</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">services.AddCors(options =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    options.AddDefaultPolicy(builder =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        builder.AllowAnyOrigin()</span><br><span class="line">        .AllowAnyMethod()</span><br><span class="line">        .AllowAnyHeader();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>and the following to <code>Configure</code> method</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.UseCors();</span><br></pre></td></tr></table></figure>
+
+<p>And finally I changed <code>WeatherForecastController.cs</code> on line <code>34</code> to disable randomization, from</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Summary = Summaries[rng.Next(Summaries.Length)]</span><br></pre></td></tr></table></figure>
+<p>to</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Summary = Summaries[index]</span><br></pre></td></tr></table></figure>
+
+<p>To start the backend project, in the project root use the command</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet run</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-The-issue"><a href="#2-The-issue" class="headerlink" title="2. The issue"></a>2. The issue</h2><p>When I applied the solution suggested by <a target="_blank" rel="noopener" href="https://availity.github.io/availity-reactstrap-validation/components/validators/">Availity docs under Custom / Async</a></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> validateTimeout: <span class="built_in">number</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> validate = debounce(<span class="function">(<span class="params">value: <span class="built_in">string</span>, ctx: <span class="built_in">any</span>, input: <span class="built_in">any</span>, cb: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> validateAsync = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> result = <span class="keyword">await</span> fetch(<span class="string">&quot;https://localhost:5001/WeatherForecast/&quot;</span>);</span><br><span class="line">        <span class="keyword">const</span> resultJson = <span class="keyword">await</span> result.json() <span class="keyword">as</span> IWeatherForecast[];</span><br><span class="line">        cb(resultJson.some(<span class="function"><span class="params">r</span> =&gt;</span> r.summary === value));</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">window</span>.clearTimeout(validateTimeout);</span><br><span class="line">    validateTimeout = <span class="built_in">window</span>.setTimeout(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        validateAsync();</span><br><span class="line">    &#125;, <span class="number">500</span>);</span><br><span class="line">&#125;, <span class="number">300</span>);</span><br></pre></td></tr></table></figure>
+
+<p>I got the following behavior</p>
+<img src="/images/posts/2020-01-25-how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/the_issue.gif">
+
+<p>As you can see, there are several issues here:</p>
+<ul>
+<li>Validation was triggered on form load</li>
+<li>On each key press validation was triggered more then once</li>
+<li>Validation was triggered by entering value in a different field</li>
+<li>Validation was triggered by clicking the Submit button even if the value wasn’t changed</li>
+</ul>
+<p>I was typing fast in order to take advantage <code>debounce</code>. In this example, the api was called 8 times.</p>
+<p>What is really happening here is that by calling onChange method, re-render of the whole component is triggered which also triggers the validation again.</p>
+<h2 id="3-The-fix"><a href="#3-The-fix" class="headerlink" title="3. The fix"></a>3. The fix</h2><p>A colleague suggested to use the <a target="_blank" rel="noopener" href="https://reactjs.org/docs/hooks-reference.html#useref"><code>useRef</code> Hook</a> and I used it to decorate the <code>validate</code> method.  It stores the mutable value and doesn’t cause a re-render.</p>
+<p>I also removed <code>setTimeout</code> because it was not needed.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> validate = useRef(</span><br><span class="line">    debounce(<span class="function">(<span class="params">value: <span class="built_in">string</span>, ctx: <span class="built_in">any</span>, input: <span class="built_in">any</span>, cb: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> validateAsync = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">            <span class="keyword">const</span> result = <span class="keyword">await</span> fetch(<span class="string">&quot;https://localhost:5001/WeatherForecast/&quot;</span>);</span><br><span class="line">            <span class="keyword">const</span> resultJson = <span class="keyword">await</span> result.json() <span class="keyword">as</span> IWeatherForecast[];</span><br><span class="line">            cb(resultJson.some(<span class="function"><span class="params">r</span> =&gt;</span> r.summary === value));</span><br><span class="line">        &#125;;</span><br><span class="line">        validateAsync();</span><br><span class="line">    &#125;, <span class="number">300</span>)</span><br><span class="line">).current;</span><br></pre></td></tr></table></figure>
+
+<p>Good progress! We are down to 4 api calls and <code>onChange</code> calls no longer trigger <code>validate</code> method!</p>
+<p>What we want now is to track validation value so we don’t call the api more then once for the same value. We also don’t want to validate on the component load.</p>
+<p>I used <code>useRef</code> Hook again to keep track of the value returned from the api and whether or not that resulted in a successfull validation.</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> validatedWeatherSummary = useRef(&#123; value: <span class="literal">undefined</span> <span class="keyword">as</span> <span class="built_in">string</span> | <span class="literal">undefined</span>, valid: <span class="literal">false</span> &#125;).current;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> validate = useRef(</span><br><span class="line">    debounce(<span class="function">(<span class="params">value: <span class="built_in">string</span>, ctx: <span class="built_in">any</span>, input: <span class="built_in">any</span>, cb: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> validateAsync = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">            <span class="keyword">const</span> result = <span class="keyword">await</span> fetch(<span class="string">&quot;https://localhost:5001/WeatherForecast/&quot;</span>);</span><br><span class="line">            <span class="keyword">const</span> resultJson = <span class="keyword">await</span> result.json() <span class="keyword">as</span> IWeatherForecast[];</span><br><span class="line">            validatedWeatherSummary.valid = resultJson.some(<span class="function"><span class="params">r</span> =&gt;</span> r.summary === value);</span><br><span class="line">            validatedWeatherSummary.value = value;</span><br><span class="line">            cb(validatedWeatherSummary.valid);</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">if</span> (</span><br><span class="line">            (validatedWeatherSummary.value !== <span class="literal">undefined</span> &amp;&amp; validatedWeatherSummary.value !== value) <span class="comment">// Validate if different value</span></span><br><span class="line">            || (value !== <span class="string">&quot;&quot;</span> &amp;&amp; validatedWeatherSummary.value === <span class="literal">undefined</span>) <span class="comment">// Initial validation on first value change</span></span><br><span class="line">        ) &#123;</span><br><span class="line">            validateAsync();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cb(validatedWeatherSummary.valid);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">300</span>)</span><br><span class="line">).current;</span><br></pre></td></tr></table></figure>
+
+<p>The result can be seen here</p>
+<img src="/images/posts/2020-01-25-how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/the_fix.gif">
+
+<p>Finally, only one api call! Since React Hooks are still pretty new, I hope that someone will find this usefull.</p>
+<hr>
+<p><em>To take screenshots I use <a target="_blank" rel="noopener" href="https://app.prntscr.com/">LightShot</a></em><br><em>To record gifs I use <a target="_blank" rel="noopener" href="https://github.com/NickeManarin/ScreenToGif/">ScreenToGif</a></em></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="https://developerschallenges.com/2020/01/25/how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/" data-id="ckgozdain001928sre5k21ork" class="article-share-link">Share</a>
+        
+          <a href="https://developerschallenges.com/2020/01/25/how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooks/" rel="tag">hooks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/validation/" rel="tag">validation</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <div class="sidebar-top">
+    <p>social</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric"><i id="icon-Twitter" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric"><i id="icon-LinkedIn" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric"><i id="icon-Gist" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric"><i id="icon-GitHub" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="RSS" href="/atom.xml"><i id="icon-RSS" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/17/how-to-edit-and-customize-html5-up-template-in-a-simple-way/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">How to edit and customize HTML5 UP template in a simple way?</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+  
+    <a href="/2020/01/31/simple-file-versioning-with-blob-storage-and-azure-functions/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">Simple file versioning with Blob Storage and Azure Functions</p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recent articles</h3>
+    <div class="widget">
+      <ul id="recent-post">
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/10/25/run-go-application-in-azure-container-instance/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-10-25-run-go-application-in-azure-container-instance/hero.png
+)" title="Run Go application in Azure Container Instance" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/10/25/run-go-application-in-azure-container-instance/" class="title">Run Go application in Azure Container Instance</a></p>
+              <p class="item-date"><time datetime="2020-10-24T22:00:00.000Z" itemprop="datePublished">2020-10-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-08-23-the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/hero.png
+)" title="The best way to send files from iPhone to Windows PC over local network" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/" class="title">The best way to send files from iPhone to Windows PC over local network</a></p>
+              <p class="item-date"><time datetime="2020-08-22T22:00:00.000Z" itemprop="datePublished">2020-08-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/07/27/re-discover-your-inner-programmer-with-f-in-three-steps/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-07-27-re-discover-your-inner-programmer-with-f-in-three-steps/hero.png
+)" title="Re-discover your inner programmer with F# in three steps" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/07/27/re-discover-your-inner-programmer-with-f-in-three-steps/" class="title">Re-discover your inner programmer with F# in three steps</a></p>
+              <p class="item-date"><time datetime="2020-07-26T22:00:00.000Z" itemprop="datePublished">2020-07-27</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-02-16-adding-application-insights-to-my-blog-one-week-aftermath/hero.png
+)" title="Adding Application Insights to my blog - one week aftermath" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="title">Adding Application Insights to my blog - one week aftermath</a></p>
+              <p class="item-date"><time datetime="2020-02-15T23:00:00.000Z" itemprop="datePublished">2020-02-16</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-02-09-get-your-most-visited-pages-in-a-serverless-way/hero.png
+)" title="Get your most visited pages in a serverless way" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="title">Get your most visited pages in a serverless way</a></p>
+              <p class="item-date"><time datetime="2020-02-08T23:00:00.000Z" itemprop="datePublished">2020-02-09</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        <div class="widget-wrap widget-list">
+    <h3 class="widget-title">other articles</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/227/Azure-Mobile-Services-tips-and-tricks/">Azure Mobile Services tips and tricks</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/226/Adding-ASP-NET-SimpleMembership-to-an-existing-MVC-4-application/">Adding ASP.NET SimpleMembership to an existing MVC 4 application</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/215/WebCamp-Zagreb-Lessons-Learned/">WebCamp Zagreb - Lessons Learned</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/192/TicTacToe-3D-game-in-WebGL-Part-I/">TicTacToe 3D game in WebGL - Part I</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/175/Using-XML-data-in-Windows-Phone-apps/">Using XML data in Windows Phone apps</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <div class="credit">
+        <p class="logo-wrap">
+          <a href="/">Developer&#39;s Challenges</a>
+        </p>
+        <p>&copy; 2020 Dalibor Mesarić</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'developerschallenges';
+  
+  var disqus_url = 'https://developerschallenges.com/2020/01/25/how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

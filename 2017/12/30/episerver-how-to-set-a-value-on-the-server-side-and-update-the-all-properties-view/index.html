@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Episerver: How to set a value on the server side and update the All Properties View? | Developer&#39;s Challenges</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This article continues the series on Episerver All Properties View with describing how to update a property value on the server side and refresh the view.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Episerver: How to set a value on the server side and update the All Properties View?">
+<meta property="og:url" content="https://developerschallenges.com/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/">
+<meta property="og:site_name" content="Developer&#39;s Challenges">
+<meta property="og:description" content="This article continues the series on Episerver All Properties View with describing how to update a property value on the server side and refresh the view.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2017-12-30-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/hero.png">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2017-12-30-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/update.gif">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2017-12-30-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/project_tree.png">
+<meta property="article:published_time" content="2017-12-29T23:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-11T08:21:03.454Z">
+<meta property="article:author" content="Dalibor Mesarić">
+<meta property="article:tag" content="episerver">
+<meta property="article:tag" content="tips">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developerschallenges.com/images/posts/2017-12-30-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/hero.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#3b8dbd"/>
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="application-name" content="Episerver: How to set a value on the server side and update the All Properties View? | Developer&#39;s Challenges"/>
+  <meta name="msapplication-square70x70logo" content="/ms-icon-70x70.png"/>
+  <meta name="msapplication-square150x150logo" content="/ms-icon-150x150.png"/>
+  <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png"/>
+  <meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=5; cycle=1"/>
+	<meta name="theme-color" content="#3b8dbd">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+
+  
+<!-- Application Insights -->
+<script type="text/javascript">
+    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+    {
+        instrumentationKey:"2d3346ce-4168-4fbe-b4d9-8953a19cb9fa"
+    }
+    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+<!-- End Application Insights -->
+
+    
+
+  
+
+  
+    <link href='//fonts.googleapis.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/">Developer&#39;s Challenges</a>
+          </h1>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Blog</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/projects">Projects</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://developerschallenges.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-content">
+              
+  <article id="post-2017-12-30-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Episerver: How to set a value on the server side and update the All Properties View?
+    </h1>
+  
+
+        </header>
+      
+	  
+      <p class="article-byline">
+        <a href="/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/" class="article-date">
+  <time datetime="2017-12-29T23:00:00.000Z" itemprop="datePublished">2017-12-30</time>
+</a>
+      </p>
+	  
+      <div class="article-entry" itemprop="articleBody">
+        <img src="/images/posts/2017-12-30-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/hero.png">
+
+<p>This article continues the series on Episerver All Properties View with describing how to update a property value on the server side and refresh the view.</p>
+<a id="more"></a>
+
+<hr>
+<p>The scenario and the code shown in the article is building on top of what is described in one of my <a href="/2017/11/02/episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/">latest articles</a>.</p>
+<p>This time in my scenario, when dropdown is changed, I want to assign that value to the <code>PetTypeName</code> property on the page. This might not sound like much of a challenge, and it is much easier to do on the frontend, but imagine what else can be done by having this action passed through the server side.</p>
+<img src="/images/posts/2017-12-30-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/update.gif">
+
+<p>First I added the property that I wanted to update on the server side to the page.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PetPage.cs</span></span><br><span class="line">[<span class="meta">ContentType(DisplayName = <span class="meta-string">&quot;PetPage&quot;</span>, GUID = <span class="meta-string">&quot;317e0860-8466-4817-8c9e-b33e83a297a4&quot;</span>, Description = <span class="meta-string">&quot;&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PetPage</span> : <span class="title">PageData</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Added code</span></span><br><span class="line">    [<span class="meta">Display(Name = <span class="meta-string">&quot;Pet Type Name&quot;</span>, GroupName = SystemTabNames.Content, Order = 5)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">string</span> PetTypeName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="comment">// End of added code</span></span><br><span class="line"></span><br><span class="line">    [<span class="meta">Display(Name = <span class="meta-string">&quot;Pet Type&quot;</span>, GroupName = SystemTabNames.Content, Order = 10)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> PetTypeBlock PetType &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Next step was to extend the code that registered dropdown chages. The idea was to refesh the All Properties View, and this is done by getting current <code>pageLink</code> and requesting the view for that value. Here is <a target="_blank" rel="noopener" href="https://world.episerver.com/documentation/Items/Developers-Guide/Episerver-Framework/7/User-Interface/Context-Sensitive-Components/">the official documentation</a>. This soulution is not exactly robust, since it uses <code>setTimeout</code>, but I was not able to figure this part out and it worked good enough.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PetTypeContainer.js</span></span><br><span class="line">define([</span><br><span class="line">    <span class="string">&quot;dojo/_base/declare&quot;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;epi/shell/layout/SimpleContainer&quot;</span></span><br><span class="line">],</span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    declare,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    SimpleContainer</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> declare([SimpleContainer], &#123;</span><br><span class="line">        petTypeDropdown: <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">        addChild: <span class="function"><span class="keyword">function</span> (<span class="params">child</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.inherited(<span class="built_in">arguments</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (child.name.indexOf(<span class="string">&quot;petType&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">this</span>.petTypeDropdown = child;</span><br><span class="line">                <span class="keyword">var</span> self = <span class="built_in">this</span>;</span><br><span class="line"></span><br><span class="line">                <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    self._hideAll();</span><br><span class="line">                &#125;, <span class="number">0</span>);</span><br><span class="line">                <span class="built_in">this</span>.own(<span class="built_in">this</span>.petTypeDropdown.on(<span class="string">&quot;change&quot;</span>,</span><br><span class="line">                    <span class="function"><span class="keyword">function</span> (<span class="params">petType</span>) </span>&#123;</span><br><span class="line">                        self._hideAll();</span><br><span class="line">                        self._updateVisiblePetType(petType);</span><br><span class="line"></span><br><span class="line">                        <span class="comment">// Added code</span></span><br><span class="line">                        <span class="keyword">if</span> (self.petTypeDropdown.previousItem === <span class="literal">null</span> || self.petTypeDropdown.previousItem !== petType) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (self.petTypeDropdown.previousItem) &#123;</span><br><span class="line">                                <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                                    <span class="keyword">var</span> contextService = epi.dependency.resolve(<span class="string">&quot;epi.shell.ContextService&quot;</span>);</span><br><span class="line">                                    <span class="keyword">var</span> currentContext = contextService.currentContext;</span><br><span class="line"></span><br><span class="line">                                    <span class="keyword">var</span> contextParameters = &#123; <span class="attr">uri</span>: <span class="string">&#x27;epi.cms.contentdata:///&#x27;</span> + currentContext.id &#125;;</span><br><span class="line">                                    dojo.publish(<span class="string">&quot;/epi/shell/context/request&quot;</span>, [contextParameters]);</span><br><span class="line">                                &#125;, <span class="number">500</span>);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                            self.petTypeDropdown.previousItem = petType;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="comment">// End of added code</span></span><br><span class="line">                    &#125;));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        _updateVisiblePetType: <span class="function"><span class="keyword">function</span> (<span class="params">petType</span>) </span>&#123;</span><br><span class="line">            $(<span class="built_in">document</span>).find(<span class="string">&#x27;input[name*=petType.selectedPetType]&#x27;</span>).closest(<span class="string">&#x27;ul&#x27;</span>).children().eq(petType).show();</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        _hideAll: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            $.each([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="function"><span class="keyword">function</span> (<span class="params">index, value</span>) </span>&#123;</span><br><span class="line">                $(<span class="built_in">document</span>).find(<span class="string">&#x27;input[name*=petType.selectedPetType]&#x27;</span>).closest(<span class="string">&#x27;ul&#x27;</span>).children().eq(value).hide();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>To actually set the new property I used an <code>InitializableModule</code>.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DefaultPropertyValueInitialization.cs</span></span><br><span class="line">[<span class="meta">InitializableModule</span>]</span><br><span class="line">[<span class="meta">ModuleDependency(typeof(EPiServer.Web.InitializationModule))</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DefaultPropertyValueInitialization</span> : <span class="title">IInitializableModule</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Initialize</span>(<span class="params">InitializationEngine context</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        ServiceLocator.Current.GetInstance&lt;IContentEvents&gt;().LoadedContent += DefaultPropertyValueInitialization_LoadedContent;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Uninitialize</span>(<span class="params">InitializationEngine context</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">DefaultPropertyValueInitialization_LoadedContent</span>(<span class="params"><span class="keyword">object</span> sender, ContentEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">switch</span> (e.Content)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> PetPage petPage:</span><br><span class="line">                HandlePetPage(e, petPage);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">HandlePetPage</span>(<span class="params">ContentEventArgs e, PetPage petPage</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        petPage = petPage.CreateWritableClone() <span class="keyword">as</span> PetPage;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (petPage != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            petPage.PetTypeName = Enum.GetName(<span class="keyword">typeof</span>(PetType), <span class="keyword">int</span>.Parse(petPage.PetType.SelectedPetType));</span><br><span class="line"></span><br><span class="line">            e.Content = petPage;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>As I final step I added an UIDescriptor to default back to All Properties View, but this shouldn’t be required with the latest version of EpiServer, where it defaults to the last used view.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PetPageUiDescriptor.cs</span></span><br><span class="line">[<span class="meta">UIDescriptorRegistration</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PetPageUiDescriptor</span> : <span class="title">UIDescriptor</span>&lt;<span class="title">PetPage</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PetPageUiDescriptor</span>(<span class="params"></span>) : <span class="title">base</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        DefaultView = CmsViewNames.AllPropertiesView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>By convention both <code>Initializers</code> and <code>Descriptors</code> should be in <code>ProjectRoot\Business</code> folder.</p>
+<img src="/images/posts/2017-12-30-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/project_tree.png">
+
+<p>All in all this solved a problem for our project, but it was still a big challenge to figure out the Dojo part.</p>
+<hr>
+<p><em>To take screenshots I use <a target="_blank" rel="noopener" href="https://app.prntscr.com/">LightShot</a></em><br><em>To record gifs I use <a target="_blank" rel="noopener" href="https://github.com/NickeManarin/ScreenToGif/">ScreenToGif</a></em></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="https://developerschallenges.com/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/" data-id="ckgozdaik000z28sr5ezd4mzb" class="article-share-link">Share</a>
+        
+          <a href="https://developerschallenges.com/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/episerver/" rel="tag">episerver</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tips/" rel="tag">tips</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <div class="sidebar-top">
+    <p>social</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric"><i id="icon-Twitter" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric"><i id="icon-LinkedIn" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric"><i id="icon-Gist" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric"><i id="icon-GitHub" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="RSS" href="/atom.xml"><i id="icon-RSS" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/30/stop-looking-at-ads-with-pi-hole/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Stop looking at ads with Pi-hole</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+  
+    <a href="/2018/01/22/passing-microsoft-exam-70-483/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">Passing Microsoft Exam 70-483</p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recent articles</h3>
+    <div class="widget">
+      <ul id="recent-post">
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/10/25/run-go-application-in-azure-container-instance/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-10-25-run-go-application-in-azure-container-instance/hero.png
+)" title="Run Go application in Azure Container Instance" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/10/25/run-go-application-in-azure-container-instance/" class="title">Run Go application in Azure Container Instance</a></p>
+              <p class="item-date"><time datetime="2020-10-24T22:00:00.000Z" itemprop="datePublished">2020-10-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-08-23-the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/hero.png
+)" title="The best way to send files from iPhone to Windows PC over local network" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/" class="title">The best way to send files from iPhone to Windows PC over local network</a></p>
+              <p class="item-date"><time datetime="2020-08-22T22:00:00.000Z" itemprop="datePublished">2020-08-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/07/27/re-discover-your-inner-programmer-with-f-in-three-steps/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-07-27-re-discover-your-inner-programmer-with-f-in-three-steps/hero.png
+)" title="Re-discover your inner programmer with F# in three steps" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/07/27/re-discover-your-inner-programmer-with-f-in-three-steps/" class="title">Re-discover your inner programmer with F# in three steps</a></p>
+              <p class="item-date"><time datetime="2020-07-26T22:00:00.000Z" itemprop="datePublished">2020-07-27</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-02-16-adding-application-insights-to-my-blog-one-week-aftermath/hero.png
+)" title="Adding Application Insights to my blog - one week aftermath" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="title">Adding Application Insights to my blog - one week aftermath</a></p>
+              <p class="item-date"><time datetime="2020-02-15T23:00:00.000Z" itemprop="datePublished">2020-02-16</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-02-09-get-your-most-visited-pages-in-a-serverless-way/hero.png
+)" title="Get your most visited pages in a serverless way" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="title">Get your most visited pages in a serverless way</a></p>
+              <p class="item-date"><time datetime="2020-02-08T23:00:00.000Z" itemprop="datePublished">2020-02-09</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        <div class="widget-wrap widget-list">
+    <h3 class="widget-title">other articles</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/227/Azure-Mobile-Services-tips-and-tricks/">Azure Mobile Services tips and tricks</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/226/Adding-ASP-NET-SimpleMembership-to-an-existing-MVC-4-application/">Adding ASP.NET SimpleMembership to an existing MVC 4 application</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/215/WebCamp-Zagreb-Lessons-Learned/">WebCamp Zagreb - Lessons Learned</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/192/TicTacToe-3D-game-in-WebGL-Part-I/">TicTacToe 3D game in WebGL - Part I</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/175/Using-XML-data-in-Windows-Phone-apps/">Using XML data in Windows Phone apps</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <div class="credit">
+        <p class="logo-wrap">
+          <a href="/">Developer&#39;s Challenges</a>
+        </p>
+        <p>&copy; 2020 Dalibor Mesarić</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'developerschallenges';
+  
+  var disqus_url = 'https://developerschallenges.com/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

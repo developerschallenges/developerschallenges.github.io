@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Episerver: All Properties component for showing and hiding content using a drop-down | Developer&#39;s Challenges</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="As a follow up to my previous article about grouping properties in a property block, I’ll describe how to create a component for showing and hiding content in all properties mode using a drop-down.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Episerver: All Properties component for showing and hiding content using a drop-down">
+<meta property="og:url" content="https://developerschallenges.com/2017/11/02/episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/">
+<meta property="og:site_name" content="Developer&#39;s Challenges">
+<meta property="og:description" content="As a follow up to my previous article about grouping properties in a property block, I’ll describe how to create a component for showing and hiding content in all properties mode using a drop-down.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2017-11-02-episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/hero.png">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2017-11-02-episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/project_tree.png">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2017-11-02-episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/dropdown.gif">
+<meta property="article:published_time" content="2017-11-01T23:00:00.000Z">
+<meta property="article:modified_time" content="2017-12-29T15:28:48.000Z">
+<meta property="article:author" content="Dalibor Mesarić">
+<meta property="article:tag" content="episerver">
+<meta property="article:tag" content="tips">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developerschallenges.com/images/posts/2017-11-02-episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/hero.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#3b8dbd"/>
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="application-name" content="Episerver: All Properties component for showing and hiding content using a drop-down | Developer&#39;s Challenges"/>
+  <meta name="msapplication-square70x70logo" content="/ms-icon-70x70.png"/>
+  <meta name="msapplication-square150x150logo" content="/ms-icon-150x150.png"/>
+  <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png"/>
+  <meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=5; cycle=1"/>
+	<meta name="theme-color" content="#3b8dbd">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+
+  
+<!-- Application Insights -->
+<script type="text/javascript">
+    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+    {
+        instrumentationKey:"2d3346ce-4168-4fbe-b4d9-8953a19cb9fa"
+    }
+    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+<!-- End Application Insights -->
+
+    
+
+  
+
+  
+    <link href='//fonts.googleapis.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/">Developer&#39;s Challenges</a>
+          </h1>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Blog</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/projects">Projects</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://developerschallenges.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-content">
+              
+  <article id="post-2017-11-02-episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Episerver: All Properties component for showing and hiding content using a drop-down
+    </h1>
+  
+
+        </header>
+      
+	  
+      <p class="article-byline">
+        <a href="/2017/11/02/episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/" class="article-date">
+  <time datetime="2017-11-01T23:00:00.000Z" itemprop="datePublished">2017-11-02</time>
+</a>
+      </p>
+	  
+      <div class="article-entry" itemprop="articleBody">
+        <img src="/images/posts/2017-11-02-episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/hero.png">
+
+<p>As a follow up to my previous article about grouping properties in a property block, I’ll describe how to create a component for showing and hiding content in all properties mode using a drop-down.</p>
+<a id="more"></a>
+
+<hr>
+<p>Having part of your form visible depending on some selection is a pretty normal use case. It is clear to the user what is selected and which other inputs are available, instead of just showing everything.</p>
+<p>The challenge was figuring out how backend (Blocks) and frontend (Dojo) are working in together Episerver. There is a <a target="_blank" rel="noopener" href="http://world.episerver.com/Blogs/Duong-Nguyen/Dates/2014/1/Country-Region-drop-down-lists-in-All-properties-mode/">great article that helped me understand this</a>. My goal was slightly different, so I’ll describe my thought process while figuring out the solution.</p>
+<p>The scenario I will describe is following: There are three different pet types in our system. The user can choose only one using a dropdown. Each choice shows only properties for that pet type. Each pet type is a block with its own properties, and we are using each of those blocks as a <a href="/2017/04/22/episerver-how-to-get-title-in-all-properties-view">property block</a> next to a dropdown.</p>
+<p>To create a demo project, follow instructions from the <a href="/2017/04/22/episerver-how-to-get-title-in-all-properties-view/">last blog post</a>.</p>
+<p>First step is pretty straigh foreward - create a new page type or a block with all the properties described in the scenario. For a dropdown use <a target="_blank" rel="noopener" href="https://world.episerver.com/blogs/Linus-Ekstrom/Dates/2013/12/SingleMultiple-selection-in-EPiServer-75/">single selection solution</a> from Episerver.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PetTypeBlock.cs</span></span><br><span class="line">[<span class="meta">ContentType(DisplayName = <span class="meta-string">&quot;PetTypeBlock&quot;</span>, GUID = <span class="meta-string">&quot;5d414eb6-de73-49db-a12c-c750fce4578c&quot;</span>, Description = <span class="meta-string">&quot;&quot;</span>, AvailableInEditMode = false)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PetTypeBlock</span> : <span class="title">BlockData</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">SelectOne(SelectionFactoryType = typeof(PetTypeSelectionFactory))</span>]</span><br><span class="line">    [<span class="meta">Display(Name = <span class="meta-string">&quot;Pet Type&quot;</span>, GroupName = SystemTabNames.Content, Order = 1)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">string</span> SelectedPetType &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Display(Name = <span class="meta-string">&quot;Cat&quot;</span>, GroupName = SystemTabNames.Content, Order = 10)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> CatBlock CatBlock &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Display(Name = <span class="meta-string">&quot;Dog&quot;</span>, GroupName = SystemTabNames.Content, Order = 20)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> DogBlock DogBlock &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Display(Name = <span class="meta-string">&quot;Fish&quot;</span>, GroupName = SystemTabNames.Content, Order = 30)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> FishBlock FishBlock &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">SetDefaultValues</span>(<span class="params">ContentType contentType</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">base</span>.SetDefaultValues(contentType);</span><br><span class="line"></span><br><span class="line">        SelectedPetType = ((<span class="keyword">int</span>)PetType.None).ToString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PetTypeSelectionFactory</span> : <span class="title">ISelectionFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerable&lt;ISelectItem&gt; <span class="title">GetSelections</span>(<span class="params">ExtendedMetadata metadata</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ISelectItem[] &#123;</span><br><span class="line">            <span class="keyword">new</span> SelectItem() &#123; Text = PetType.None.ToString(), Value = ((<span class="keyword">int</span>)PetType.None).ToString() &#125;,</span><br><span class="line">            <span class="keyword">new</span> SelectItem() &#123; Text = PetType.Cat.ToString(), Value = ((<span class="keyword">int</span>)PetType.Cat).ToString() &#125;,</span><br><span class="line">            <span class="keyword">new</span> SelectItem() &#123; Text = PetType.Dog.ToString(), Value = ((<span class="keyword">int</span>)PetType.Dog).ToString() &#125;,</span><br><span class="line">            <span class="keyword">new</span> SelectItem() &#123; Text = PetType.Fish.ToString(), Value = ((<span class="keyword">int</span>)PetType.Fish).ToString() &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> PetType</span><br><span class="line">&#123;</span><br><span class="line">    None = <span class="number">0</span>,</span><br><span class="line">    Cat = <span class="number">1</span>,</span><br><span class="line">    Dog = <span class="number">2</span>,</span><br><span class="line">    Fish = <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Here are the individual blocks whose content we want to toggle by changing the values in the dropdown.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CatBlock.cs</span></span><br><span class="line">[<span class="meta">ContentType(DisplayName = <span class="meta-string">&quot;CatBlock&quot;</span>, GUID = <span class="meta-string">&quot;837e9ed7-03ae-4013-97f6-0db251f0a8e3&quot;</span>, Description = <span class="meta-string">&quot;&quot;</span>, AvailableInEditMode = false)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CatBlock</span> : <span class="title">BlockData</span></span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DogBlock.cs</span></span><br><span class="line">[<span class="meta">ContentType(DisplayName = <span class="meta-string">&quot;DogBlock&quot;</span>, GUID = <span class="meta-string">&quot;8055ac0e-27fb-44a2-bc9f-8cb146ab7e4f&quot;</span>, Description = <span class="meta-string">&quot;&quot;</span>, AvailableInEditMode = false)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DogBlock</span> : <span class="title">BlockData</span></span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// FishBlock.cs</span></span><br><span class="line">[<span class="meta">ContentType(DisplayName = <span class="meta-string">&quot;FishBlock&quot;</span>, GUID = <span class="meta-string">&quot;59f93439-8f49-4ba9-a01e-a62a97efb400&quot;</span>, Description = <span class="meta-string">&quot;&quot;</span>, AvailableInEditMode = false)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FishBlock</span> : <span class="title">BlockData</span></span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Next step is to create editor descriptor so that Episerver knows on which object we want the Dojo script to load, and the actual path to the script. Editor descriptors are usually placed inside the <code>Business</code> folder. <code>ClientLayoutClass</code> path is related to what is described in the next step.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// StartPageEditorDescriptor.cs</span></span><br><span class="line">[<span class="meta">EditorDescriptorRegistration(TargetType = typeof(PetTypeBlock))</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StartPageEditorDescriptor</span> : <span class="title">EditorDescriptor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">ModifyMetadata</span>(<span class="params">ExtendedMetadata metadata, IEnumerable&lt;Attribute&gt; attributes</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">base</span>.ModifyMetadata(metadata, attributes);</span><br><span class="line">        metadata.Properties.Cast&lt;ExtendedMetadata&gt;().First().GroupSettings.ClientLayoutClass = <span class="string">&quot;myapp/editors/PetTypeContainer&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In the root of your project in <code>modules.config</code> you have to declare what your Episerver scripts folder is - in this case it is in <code>ProjectRoot\ClientResources\Scripts</code>. ClientResources folder is Episerver convention.</p>
+<img src="/images/posts/2017-11-02-episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/project_tree.png">
+
+<p><code>myapp</code> is a connection between the script and <code>ClientLayoutClass</code> path from <code>StartPageEditorDescriptor</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">module</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dojo</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">paths</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">add</span> <span class="attr">name</span>=<span class="string">&quot;myapp&quot;</span> <span class="attr">path</span>=<span class="string">&quot;Scripts&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">paths</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dojo</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>The script is the mix of Dojo and jQuery. It is not an elegant solution, but it works. The challenge was finding the right element which represents one of the added blocks we want to show/hide. I <a target="_blank" rel="noopener" href="https://world.episerver.com/forum/developer-forum/Problems-and-bugs/Thread-Container/2017/3/internet-explorer-not-rendering-name-attribute/">asked on Epi formus</a> about some inconsistencies regarding generated HTML, but no cigar.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PetTypeContainer.js</span></span><br><span class="line">define([</span><br><span class="line">    <span class="string">&quot;dojo/_base/declare&quot;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;epi/shell/layout/SimpleContainer&quot;</span></span><br><span class="line">],</span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    declare,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    SimpleContainer</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> declare([SimpleContainer], &#123;</span><br><span class="line">        petTypeDropdown: <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">        addChild: <span class="function"><span class="keyword">function</span> (<span class="params">child</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.inherited(<span class="built_in">arguments</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (child.name.indexOf(<span class="string">&quot;petType&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">this</span>.petTypeDropdown = child;</span><br><span class="line">                <span class="keyword">var</span> self = <span class="built_in">this</span>;</span><br><span class="line"></span><br><span class="line">                <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    self._hideAll();</span><br><span class="line">                &#125;, <span class="number">0</span>);</span><br><span class="line">                <span class="built_in">this</span>.own(<span class="built_in">this</span>.petTypeDropdown.on(<span class="string">&quot;change&quot;</span>,</span><br><span class="line">                    <span class="function"><span class="keyword">function</span> (<span class="params">petType</span>) </span>&#123;</span><br><span class="line">                        self._hideAll();</span><br><span class="line">                        self._updateVisiblePetType(petType);</span><br><span class="line">                    &#125;));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        _updateVisiblePetType: <span class="function"><span class="keyword">function</span> (<span class="params">petType</span>) </span>&#123;</span><br><span class="line">            $(<span class="built_in">document</span>).find(<span class="string">&#x27;input[name*=petType.selectedPetType]&#x27;</span>).closest(<span class="string">&#x27;ul&#x27;</span>).children().eq(petType).show();</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        _hideAll: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            $.each([ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span> ], <span class="function"><span class="keyword">function</span>(<span class="params">index, value</span>) </span>&#123;</span><br><span class="line">                $(<span class="built_in">document</span>).find(<span class="string">&#x27;input[name*=petType.selectedPetType]&#x27;</span>).closest(<span class="string">&#x27;ul&#x27;</span>).children().eq(value).hide();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>As a final step, if you created a block instead of a page - add that block compoment to the page.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PetPage.cs</span></span><br><span class="line">[<span class="meta">ContentType(DisplayName = <span class="meta-string">&quot;PetPage&quot;</span>, GUID = <span class="meta-string">&quot;317e0860-8466-4817-8c9e-b33e83a297a4&quot;</span>, Description = <span class="meta-string">&quot;&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PetPage</span> : <span class="title">PageData</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Display(Name = <span class="meta-string">&quot;Pet Type&quot;</span>, GroupName = SystemTabNames.Content, Order = 10)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> PetTypeBlock PetType &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The end result is a dropdown that shows different blocks.</p>
+<img src="/images/posts/2017-11-02-episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/dropdown.gif">
+
+<p>This turned out to be very usefull feature for my project, and hopefully you will find good use for it in your projects as well!</p>
+<hr>
+<p><em>To take screenshots I use <a target="_blank" rel="noopener" href="https://app.prntscr.com/">LightShot</a></em><br><em>To record gifs I use <a target="_blank" rel="noopener" href="https://github.com/NickeManarin/ScreenToGif/">ScreenToGif</a></em></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="https://developerschallenges.com/2017/11/02/episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/" data-id="ckgozdaij000v28sra2kmdzk4" class="article-share-link">Share</a>
+        
+          <a href="https://developerschallenges.com/2017/11/02/episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/episerver/" rel="tag">episerver</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tips/" rel="tag">tips</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <div class="sidebar-top">
+    <p>social</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric"><i id="icon-Twitter" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric"><i id="icon-LinkedIn" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric"><i id="icon-Gist" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric"><i id="icon-GitHub" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="RSS" href="/atom.xml"><i id="icon-RSS" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/22/episerver-how-to-get-title-in-all-properties-view/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Episerver: How to get title in All Properties view?</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+  
+    <a href="/2017/11/30/stop-looking-at-ads-with-pi-hole/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">Stop looking at ads with Pi-hole</p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recent articles</h3>
+    <div class="widget">
+      <ul id="recent-post">
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/10/25/run-go-application-in-azure-container-instance/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-10-25-run-go-application-in-azure-container-instance/hero.png
+)" title="Run Go application in Azure Container Instance" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/10/25/run-go-application-in-azure-container-instance/" class="title">Run Go application in Azure Container Instance</a></p>
+              <p class="item-date"><time datetime="2020-10-24T22:00:00.000Z" itemprop="datePublished">2020-10-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-08-23-the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/hero.png
+)" title="The best way to send files from iPhone to Windows PC over local network" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/" class="title">The best way to send files from iPhone to Windows PC over local network</a></p>
+              <p class="item-date"><time datetime="2020-08-22T22:00:00.000Z" itemprop="datePublished">2020-08-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/07/27/re-discover-your-inner-programmer-with-f-in-three-steps/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-07-27-re-discover-your-inner-programmer-with-f-in-three-steps/hero.png
+)" title="Re-discover your inner programmer with F# in three steps" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/07/27/re-discover-your-inner-programmer-with-f-in-three-steps/" class="title">Re-discover your inner programmer with F# in three steps</a></p>
+              <p class="item-date"><time datetime="2020-07-26T22:00:00.000Z" itemprop="datePublished">2020-07-27</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-02-16-adding-application-insights-to-my-blog-one-week-aftermath/hero.png
+)" title="Adding Application Insights to my blog - one week aftermath" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="title">Adding Application Insights to my blog - one week aftermath</a></p>
+              <p class="item-date"><time datetime="2020-02-15T23:00:00.000Z" itemprop="datePublished">2020-02-16</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-02-09-get-your-most-visited-pages-in-a-serverless-way/hero.png
+)" title="Get your most visited pages in a serverless way" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="title">Get your most visited pages in a serverless way</a></p>
+              <p class="item-date"><time datetime="2020-02-08T23:00:00.000Z" itemprop="datePublished">2020-02-09</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        <div class="widget-wrap widget-list">
+    <h3 class="widget-title">other articles</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/227/Azure-Mobile-Services-tips-and-tricks/">Azure Mobile Services tips and tricks</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/226/Adding-ASP-NET-SimpleMembership-to-an-existing-MVC-4-application/">Adding ASP.NET SimpleMembership to an existing MVC 4 application</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/215/WebCamp-Zagreb-Lessons-Learned/">WebCamp Zagreb - Lessons Learned</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/192/TicTacToe-3D-game-in-WebGL-Part-I/">TicTacToe 3D game in WebGL - Part I</a>
+          </li>
+        
+          <li>
+            <a target="_blank" rel="noopener" href="http://monox.mono-software.com/blog/post/Mono/175/Using-XML-data-in-Windows-Phone-apps/">Using XML data in Windows Phone apps</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <div class="credit">
+        <p class="logo-wrap">
+          <a href="/">Developer&#39;s Challenges</a>
+        </p>
+        <p>&copy; 2020 Dalibor Mesarić</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'developerschallenges';
+  
+  var disqus_url = 'https://developerschallenges.com/2017/11/02/episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
