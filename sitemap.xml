@@ -2,9 +2,177 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://developerschallenges.com/2013/05/27/azure-mobile-services-tips-and-tricks/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2013/05/07/adding-asp-net-simplemembership-to-an-existing-mvc-4-application/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2012/08/20/tictactoe-3d-game-in-webgl-part-i/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2012/05/04/using-xml-data-in-windows-phone-apps/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://developerschallenges.com/2020/10/25/run-go-application-in-azure-container-instance/</loc>
     
-    <lastmod>2020-10-25</lastmod>
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2020/01/25/how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2020/01/31/simple-file-versioning-with-blob-storage-and-azure-functions/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2016/06/01/how-to-run-graylog-on-ubuntu-server-in-hyper-v/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2016/09/25/ux-rant-september-2016-edition/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2016/10/28/simple-angular-with-typescript-setup-in-visual-studio/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2016/12/11/episerver-certification/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2017/11/02/episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2017/11/30/stop-looking-at-ads-with-pi-hole/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2018/01/22/passing-microsoft-exam-70-483/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2018/02/11/ndc-london-2018-recap/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2019/07/16/azure-subscription-chooser-powershell-script/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2020/01/17/how-to-edit-and-customize-html5-up-template-in-a-simple-way/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2012/12/19/webcamp-zagreb-lessons-learned/</loc>
+    
+    <lastmod>2020-10-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/publishnotifier/</loc>
+    
+    <lastmod>2020-10-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/tictactoe/</loc>
+    
+    <lastmod>2020-10-30</lastmod>
     
   </url>
   
@@ -12,90 +180,6 @@
     <loc>https://developerschallenges.com/projects/</loc>
     
     <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2020/01/17/how-to-edit-and-customize-html5-up-template-in-a-simple-way/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2020/01/25/how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2020/01/31/simple-file-versioning-with-blob-storage-and-azure-functions/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2018/01/22/passing-microsoft-exam-70-483/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2018/02/11/ndc-london-2018-recap/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2019/07/16/azure-subscription-chooser-powershell-script/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2016/09/25/ux-rant-september-2016-edition/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2017/11/30/stop-looking-at-ads-with-pi-hole/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/</loc>
-    
-    <lastmod>2020-10-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/</loc>
-    
-    <lastmod>2020-08-23</lastmod>
     
   </url>
   
@@ -110,48 +194,6 @@
     <loc>https://developerschallenges.com/about/</loc>
     
     <lastmod>2018-01-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2017/11/02/episerver-all-properties-component-for-showing-and-hiding-content-using-a-drop-down/</loc>
-    
-    <lastmod>2017-12-29</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/</loc>
-    
-    <lastmod>2017-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2016/06/01/how-to-run-graylog-on-ubuntu-server-in-hyper-v/</loc>
-    
-    <lastmod>2017-04-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2016/10/28/simple-angular-with-typescript-setup-in-visual-studio/</loc>
-    
-    <lastmod>2017-04-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2016/12/11/episerver-certification/</loc>
-    
-    <lastmod>2017-04-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/publishnotifier/</loc>
-    
-    <lastmod>2016-12-11</lastmod>
     
   </url>
   
@@ -177,13 +219,6 @@
   </url>
   
   <url>
-    <loc>https://developerschallenges.com/tictactoe/</loc>
-    
-    <lastmod>2016-02-21</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://developerschallenges.com/zagrebgo/</loc>
     
     <lastmod>2016-02-21</lastmod>
@@ -200,7 +235,7 @@
 
   <url>
     <loc>https://developerschallenges.com/</loc>
-    <lastmod>2020-10-25</lastmod>
+    <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
