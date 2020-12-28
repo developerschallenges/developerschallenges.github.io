@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://developerschallenges.com/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/</loc>
+    
+    <lastmod>2020-12-28</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://developerschallenges.com/2013/05/27/azure-mobile-services-tips-and-tricks/</loc>
     
     <lastmod>2020-10-31</lastmod>
@@ -235,7 +242,7 @@
 
   <url>
     <loc>https://developerschallenges.com/</loc>
-    <lastmod>2020-11-06</lastmod>
+    <lastmod>2020-12-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

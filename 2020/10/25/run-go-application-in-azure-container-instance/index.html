@@ -72,7 +72,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
 </head>
 
 <body>
@@ -165,7 +165,6 @@
 <h2 id="Hosting-and-testing-the-application"><a href="#Hosting-and-testing-the-application" class="headerlink" title="Hosting and testing the application"></a>Hosting and testing the application</h2><p>Once my <a target="_blank" rel="noopener" href="https://github.com/dalibormesaric/go-key-value-api/actions">GitHub Action successfully ran</a>, and my container image <a target="_blank" rel="noopener" href="https://hub.docker.com/r/dalibormesaric/go-key-value-api">ended up in Docker Hub container registry</a> it was time to actually publish my container image to Azure Container Instance. To do this I chose to use <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI</a>, but you can do it in Azure Portal as well.</p>
 <p>These are the two commands I used to create a new Resource Group and a new Azure Container Instance. Notice the <code>--image dalibormesaric/go-key-value-api</code> part which points to my Docker Hub repository.</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">az group create --location westeurope --name rg-go-key-value-api</span><br><span class="line">az container create --resource-group rg-go-key-value-api --name aci-go-key-value-api --image dalibormesaric/go-key-value-api --cpu 1 --memory 1 --dns-name-label go-key-value-api --ports 9000</span><br></pre></td></tr></table></figure>
-
 <p>Finally to test the newly deployed api I used Visual Studio Code extension called <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">Rest Client</a>. I just replaced localhost with the dns name I used to create the Azure Container Instance in test.http, and it worked!</p>
 <p><img src="/images/posts/2020-10-25-run-go-application-in-azure-container-instance/rest-client.gif" alt="Rest Client"></p>
 <p>As a final note, make sure to stop or delete your unused Azure resources to avoid unwanted costs.</p>
@@ -175,7 +174,7 @@
 
       </div>
       <footer class="article-footer">
-        <a data-url="https://developerschallenges.com/2020/10/25/run-go-application-in-azure-container-instance/" data-id="ckh5xnct4006adcsr35so3uyn" class="article-share-link">Share</a>
+        <a data-url="https://developerschallenges.com/2020/10/25/run-go-application-in-azure-container-instance/" data-id="ckj923pji006e1ksr50k6gtaj" class="article-share-link">Share</a>
         
           <a href="https://developerschallenges.com/2020/10/25/run-go-application-in-azure-container-instance/#comments" class="article-comment-link">Comments</a>
         
@@ -201,15 +200,35 @@
     <p>social</p>
     <ul class="social-links">
       
-        <li><a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric"><i id="icon-LinkedIn" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric">
+            <i id="icon-LinkedIn" class="icon"></i>LinkedIn
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric"><i id="icon-Twitter" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric">
+            <i id="icon-Twitter" class="icon"></i>Twitter
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric"><i id="icon-GitHub" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric">
+            <i id="icon-GitHub" class="icon"></i>GitHub
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric"><i id="icon-Gist" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric">
+            <i id="icon-Gist" class="icon"></i>Gist
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="RSS" href="/atom.xml"><i id="icon-RSS" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="RSS" href="/atom.xml">
+            <i id="icon-RSS" class="icon"></i>RSS
+          </a>
+        </li>
       
     </ul>
   </div>
@@ -224,6 +243,12 @@
     </a>
   
   
+    <a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">Embed Twitter timeline by search phrase or hashtag</p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
 </nav>
 
   
@@ -235,6 +260,23 @@
     <h3 class="widget-title">recent articles</h3>
     <div class="widget">
       <ul id="recent-post">
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/hero.png
+)" title="Embed Twitter timeline by search phrase or hashtag" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="title">Embed Twitter timeline by search phrase or hashtag</a></p>
+              <p class="item-date"><time datetime="2020-12-27T23:00:00.000Z" itemprop="datePublished">2020-12-28</time></p>
+            </div>
+          </li>
         
           <li>
             <div class="item-thumbnail">
@@ -301,23 +343,6 @@
               <p class="item-category"></p>
               <p class="item-title"><a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="title">Adding Application Insights to my blog - one week aftermath</a></p>
               <p class="item-date"><time datetime="2020-02-15T23:00:00.000Z" itemprop="datePublished">2020-02-16</time></p>
-            </div>
-          </li>
-        
-          <li>
-            <div class="item-thumbnail">
-              <a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="thumbnail">
-  
-    <span style="background-image:url(/images/posts/2020-02-09-get-your-most-visited-pages-in-a-serverless-way/hero.png
-)" title="Get your most visited pages in a serverless way" class="thumbnail-image"></span>
-  
-
-</a>
-            </div>
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="title">Get your most visited pages in a serverless way</a></p>
-              <p class="item-date"><time datetime="2020-02-08T23:00:00.000Z" itemprop="datePublished">2020-02-09</time></p>
             </div>
           </li>
         

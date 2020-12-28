@@ -68,7 +68,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
 </head>
 
 <body>
@@ -150,10 +150,8 @@
 <p>Following the <a target="_blank" rel="noopener" href="http://world.episerver.com/documentation/developer-guides/CMS/getting-started/creating-your-project/">Episerver Getting started</a> tutorial you can create a clean Episerver project to try this out.</p>
 <p>Add a new block:</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">ContentType(</span></span><br><span class="line"><span class="meta">    DisplayName = <span class="meta-string">&quot;PetBlock&quot;</span>,</span></span><br><span class="line"><span class="meta">    GUID = <span class="meta-string">&quot;ebbdbefb-b0e1-40fd-a13e-f408c16ee1fd&quot;</span>,</span></span><br><span class="line"><span class="meta">    Description = <span class="meta-string">&quot;&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PetBlock</span> : <span class="title">BlockData</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">CultureSpecific</span>]</span><br><span class="line">    [<span class="meta">Display(</span></span><br><span class="line"><span class="meta">        Name = <span class="meta-string">&quot;Name&quot;</span>,</span></span><br><span class="line"><span class="meta">        Description = <span class="meta-string">&quot;Name field&#x27;s description&quot;</span>,</span></span><br><span class="line"><span class="meta">        GroupName = SystemTabNames.Content,</span></span><br><span class="line"><span class="meta">        Order = 1)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>And add it to your <code>StartPage</code> page model:</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">ContentType(</span></span><br><span class="line"><span class="meta">    DisplayName = <span class="meta-string">&quot;StartPage&quot;</span>,</span></span><br><span class="line"><span class="meta">    GUID = <span class="meta-string">&quot;8205d905-b467-4d0c-ae2c-391d0640456a&quot;</span>,</span></span><br><span class="line"><span class="meta">    Description = <span class="meta-string">&quot;&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StartPage</span> : <span class="title">PageData</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Display(</span></span><br><span class="line"><span class="meta">        Name = <span class="meta-string">&quot;Pet&quot;</span>,</span></span><br><span class="line"><span class="meta">        GroupName = SystemTabNames.Content,</span></span><br><span class="line"><span class="meta">        Order = 5)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> PetBlock PetBlock &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>And there you have it! Whatever is you set the <code>Name</code> property to in the <code>Display</code> attribute, that will be your title in the all properties view!</p>
 <p>Using blocks as properties is what allowed me to make an interseting feature i will describe in one of the future blog posts.</p>
 <hr>
@@ -161,7 +159,7 @@
 
       </div>
       <footer class="article-footer">
-        <a data-url="https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/" data-id="ckh5xncs90013dcsrdlzbc36o" class="article-share-link">Share</a>
+        <a data-url="https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/" data-id="ckj923pil00121ksrd6cm8xa6" class="article-share-link">Share</a>
         
           <a href="https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/#comments" class="article-comment-link">Comments</a>
         
@@ -187,15 +185,35 @@
     <p>social</p>
     <ul class="social-links">
       
-        <li><a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric"><i id="icon-LinkedIn" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric">
+            <i id="icon-LinkedIn" class="icon"></i>LinkedIn
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric"><i id="icon-Twitter" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric">
+            <i id="icon-Twitter" class="icon"></i>Twitter
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric"><i id="icon-GitHub" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric">
+            <i id="icon-GitHub" class="icon"></i>GitHub
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric"><i id="icon-Gist" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric">
+            <i id="icon-Gist" class="icon"></i>Gist
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="RSS" href="/atom.xml"><i id="icon-RSS" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="RSS" href="/atom.xml">
+            <i id="icon-RSS" class="icon"></i>RSS
+          </a>
+        </li>
       
     </ul>
   </div>
@@ -227,6 +245,23 @@
     <h3 class="widget-title">recent articles</h3>
     <div class="widget">
       <ul id="recent-post">
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/hero.png
+)" title="Embed Twitter timeline by search phrase or hashtag" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="title">Embed Twitter timeline by search phrase or hashtag</a></p>
+              <p class="item-date"><time datetime="2020-12-27T23:00:00.000Z" itemprop="datePublished">2020-12-28</time></p>
+            </div>
+          </li>
         
           <li>
             <div class="item-thumbnail">
@@ -293,23 +328,6 @@
               <p class="item-category"></p>
               <p class="item-title"><a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="title">Adding Application Insights to my blog - one week aftermath</a></p>
               <p class="item-date"><time datetime="2020-02-15T23:00:00.000Z" itemprop="datePublished">2020-02-16</time></p>
-            </div>
-          </li>
-        
-          <li>
-            <div class="item-thumbnail">
-              <a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="thumbnail">
-  
-    <span style="background-image:url(/images/posts/2020-02-09-get-your-most-visited-pages-in-a-serverless-way/hero.png
-)" title="Get your most visited pages in a serverless way" class="thumbnail-image"></span>
-  
-
-</a>
-            </div>
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="title">Get your most visited pages in a serverless way</a></p>
-              <p class="item-date"><time datetime="2020-02-08T23:00:00.000Z" itemprop="datePublished">2020-02-09</time></p>
             </div>
           </li>
         

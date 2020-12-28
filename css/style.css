@@ -568,9 +568,10 @@ body {
 }
 #sidebar .sidebar-top .social-links .social-tooltip {
   position: relative;
+  font-size: 0;
 }
 #sidebar .sidebar-top .social-links .social-tooltip:hover:after {
-  top: -41px;
+  top: -55px;
   background: #fff;
   font-size: 14px;
   color: #666;
@@ -587,7 +588,7 @@ body {
   z-index: 1;
 }
 #sidebar .sidebar-top .social-links .social-tooltip:hover:before {
-  top: -14px;
+  top: -28px;
   right: 8px;
   border: solid;
   border-color: #fff transparent;
@@ -1100,10 +1101,9 @@ a.article-title:hover {
   padding: 10px 0;
 }
 .article-entry blockquote {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.4em;
   margin: 1.6em 20px;
-  text-align: center;
+  border-left: 4px #ddd solid;
+  padding-left: 20px;
 }
 .article-entry blockquote footer {
   font-size: 14px;

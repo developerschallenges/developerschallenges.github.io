@@ -69,7 +69,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
 </head>
 
 <body>
@@ -149,16 +149,12 @@
 
 <p>First I added the property that I wanted to update on the server side to the page.</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PetPage.cs</span></span><br><span class="line">[<span class="meta">ContentType(DisplayName = <span class="meta-string">&quot;PetPage&quot;</span>, GUID = <span class="meta-string">&quot;317e0860-8466-4817-8c9e-b33e83a297a4&quot;</span>, Description = <span class="meta-string">&quot;&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PetPage</span> : <span class="title">PageData</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Added code</span></span><br><span class="line">    [<span class="meta">Display(Name = <span class="meta-string">&quot;Pet Type Name&quot;</span>, GroupName = SystemTabNames.Content, Order = 5)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">string</span> PetTypeName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="comment">// End of added code</span></span><br><span class="line"></span><br><span class="line">    [<span class="meta">Display(Name = <span class="meta-string">&quot;Pet Type&quot;</span>, GroupName = SystemTabNames.Content, Order = 10)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> PetTypeBlock PetType &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>Next step was to extend the code that registered dropdown chages. The idea was to refesh the All Properties View, and this is done by getting current <code>pageLink</code> and requesting the view for that value. Here is <a target="_blank" rel="noopener" href="https://world.episerver.com/documentation/Items/Developers-Guide/Episerver-Framework/7/User-Interface/Context-Sensitive-Components/">the official documentation</a>. This soulution is not exactly robust, since it uses <code>setTimeout</code>, but I was not able to figure this part out and it worked good enough.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PetTypeContainer.js</span></span><br><span class="line">define([</span><br><span class="line">    <span class="string">&quot;dojo/_base/declare&quot;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;epi/shell/layout/SimpleContainer&quot;</span></span><br><span class="line">],</span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    declare,</span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    SimpleContainer</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> declare([SimpleContainer], &#123;</span><br><span class="line">        petTypeDropdown: <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">        addChild: <span class="function"><span class="keyword">function</span> (<span class="params">child</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.inherited(<span class="built_in">arguments</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (child.name.indexOf(<span class="string">&quot;petType&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">this</span>.petTypeDropdown = child;</span><br><span class="line">                <span class="keyword">var</span> self = <span class="built_in">this</span>;</span><br><span class="line"></span><br><span class="line">                <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    self._hideAll();</span><br><span class="line">                &#125;, <span class="number">0</span>);</span><br><span class="line">                <span class="built_in">this</span>.own(<span class="built_in">this</span>.petTypeDropdown.on(<span class="string">&quot;change&quot;</span>,</span><br><span class="line">                    <span class="function"><span class="keyword">function</span> (<span class="params">petType</span>) </span>&#123;</span><br><span class="line">                        self._hideAll();</span><br><span class="line">                        self._updateVisiblePetType(petType);</span><br><span class="line"></span><br><span class="line">                        <span class="comment">// Added code</span></span><br><span class="line">                        <span class="keyword">if</span> (self.petTypeDropdown.previousItem === <span class="literal">null</span> || self.petTypeDropdown.previousItem !== petType) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (self.petTypeDropdown.previousItem) &#123;</span><br><span class="line">                                <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                                    <span class="keyword">var</span> contextService = epi.dependency.resolve(<span class="string">&quot;epi.shell.ContextService&quot;</span>);</span><br><span class="line">                                    <span class="keyword">var</span> currentContext = contextService.currentContext;</span><br><span class="line"></span><br><span class="line">                                    <span class="keyword">var</span> contextParameters = &#123; <span class="attr">uri</span>: <span class="string">&#x27;epi.cms.contentdata:///&#x27;</span> + currentContext.id &#125;;</span><br><span class="line">                                    dojo.publish(<span class="string">&quot;/epi/shell/context/request&quot;</span>, [contextParameters]);</span><br><span class="line">                                &#125;, <span class="number">500</span>);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                            self.petTypeDropdown.previousItem = petType;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="comment">// End of added code</span></span><br><span class="line">                    &#125;));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        _updateVisiblePetType: <span class="function"><span class="keyword">function</span> (<span class="params">petType</span>) </span>&#123;</span><br><span class="line">            $(<span class="built_in">document</span>).find(<span class="string">&#x27;input[name*=petType.selectedPetType]&#x27;</span>).closest(<span class="string">&#x27;ul&#x27;</span>).children().eq(petType).show();</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        _hideAll: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            $.each([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="function"><span class="keyword">function</span> (<span class="params">index, value</span>) </span>&#123;</span><br><span class="line">                $(<span class="built_in">document</span>).find(<span class="string">&#x27;input[name*=petType.selectedPetType]&#x27;</span>).closest(<span class="string">&#x27;ul&#x27;</span>).children().eq(value).hide();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>To actually set the new property I used an <code>InitializableModule</code>.</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DefaultPropertyValueInitialization.cs</span></span><br><span class="line">[<span class="meta">InitializableModule</span>]</span><br><span class="line">[<span class="meta">ModuleDependency(typeof(EPiServer.Web.InitializationModule))</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DefaultPropertyValueInitialization</span> : <span class="title">IInitializableModule</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Initialize</span>(<span class="params">InitializationEngine context</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        ServiceLocator.Current.GetInstance&lt;IContentEvents&gt;().LoadedContent += DefaultPropertyValueInitialization_LoadedContent;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Uninitialize</span>(<span class="params">InitializationEngine context</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">DefaultPropertyValueInitialization_LoadedContent</span>(<span class="params"><span class="keyword">object</span> sender, ContentEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">switch</span> (e.Content)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> PetPage petPage:</span><br><span class="line">                HandlePetPage(e, petPage);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">HandlePetPage</span>(<span class="params">ContentEventArgs e, PetPage petPage</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        petPage = petPage.CreateWritableClone() <span class="keyword">as</span> PetPage;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (petPage != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            petPage.PetTypeName = Enum.GetName(<span class="keyword">typeof</span>(PetType), <span class="keyword">int</span>.Parse(petPage.PetType.SelectedPetType));</span><br><span class="line"></span><br><span class="line">            e.Content = petPage;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>As I final step I added an UIDescriptor to default back to All Properties View, but this shouldn’t be required with the latest version of EpiServer, where it defaults to the last used view.</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PetPageUiDescriptor.cs</span></span><br><span class="line">[<span class="meta">UIDescriptorRegistration</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PetPageUiDescriptor</span> : <span class="title">UIDescriptor</span>&lt;<span class="title">PetPage</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PetPageUiDescriptor</span>(<span class="params"></span>) : <span class="title">base</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        DefaultView = CmsViewNames.AllPropertiesView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>By convention both <code>Initializers</code> and <code>Descriptors</code> should be in <code>ProjectRoot\Business</code> folder.</p>
 <img src="/images/posts/2017-12-30-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/project_tree.png">
 
@@ -168,7 +164,7 @@
 
       </div>
       <footer class="article-footer">
-        <a data-url="https://developerschallenges.com/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/" data-id="ckh5xncsb0019dcsrdfwc3qxw" class="article-share-link">Share</a>
+        <a data-url="https://developerschallenges.com/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/" data-id="ckj923pin00181ksr7dgf48j0" class="article-share-link">Share</a>
         
           <a href="https://developerschallenges.com/2017/12/30/episerver-how-to-set-a-value-on-the-server-side-and-update-the-all-properties-view/#comments" class="article-comment-link">Comments</a>
         
@@ -194,15 +190,35 @@
     <p>social</p>
     <ul class="social-links">
       
-        <li><a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric"><i id="icon-LinkedIn" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric">
+            <i id="icon-LinkedIn" class="icon"></i>LinkedIn
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric"><i id="icon-Twitter" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric">
+            <i id="icon-Twitter" class="icon"></i>Twitter
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric"><i id="icon-GitHub" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric">
+            <i id="icon-GitHub" class="icon"></i>GitHub
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric"><i id="icon-Gist" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric">
+            <i id="icon-Gist" class="icon"></i>Gist
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="RSS" href="/atom.xml"><i id="icon-RSS" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="RSS" href="/atom.xml">
+            <i id="icon-RSS" class="icon"></i>RSS
+          </a>
+        </li>
       
     </ul>
   </div>
@@ -234,6 +250,23 @@
     <h3 class="widget-title">recent articles</h3>
     <div class="widget">
       <ul id="recent-post">
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/hero.png
+)" title="Embed Twitter timeline by search phrase or hashtag" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="title">Embed Twitter timeline by search phrase or hashtag</a></p>
+              <p class="item-date"><time datetime="2020-12-27T23:00:00.000Z" itemprop="datePublished">2020-12-28</time></p>
+            </div>
+          </li>
         
           <li>
             <div class="item-thumbnail">
@@ -300,23 +333,6 @@
               <p class="item-category"></p>
               <p class="item-title"><a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="title">Adding Application Insights to my blog - one week aftermath</a></p>
               <p class="item-date"><time datetime="2020-02-15T23:00:00.000Z" itemprop="datePublished">2020-02-16</time></p>
-            </div>
-          </li>
-        
-          <li>
-            <div class="item-thumbnail">
-              <a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="thumbnail">
-  
-    <span style="background-image:url(/images/posts/2020-02-09-get-your-most-visited-pages-in-a-serverless-way/hero.png
-)" title="Get your most visited pages in a serverless way" class="thumbnail-image"></span>
-  
-
-</a>
-            </div>
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="title">Get your most visited pages in a serverless way</a></p>
-              <p class="item-date"><time datetime="2020-02-08T23:00:00.000Z" itemprop="datePublished">2020-02-09</time></p>
             </div>
           </li>
         

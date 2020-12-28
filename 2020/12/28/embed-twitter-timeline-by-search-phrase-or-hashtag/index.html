@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Embed Twitter timeline by search phrase or hashtag | Developer&#39;s Challenges</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Over the years Twitter transformed quite a bit, so it is not really possible to use the official way of embedding a timeline by search phrase or hashtag. In this blog post I explain how I managed to">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Embed Twitter timeline by search phrase or hashtag">
+<meta property="og:url" content="https://developerschallenges.com/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/">
+<meta property="og:site_name" content="Developer&#39;s Challenges">
+<meta property="og:description" content="Over the years Twitter transformed quite a bit, so it is not really possible to use the official way of embedding a timeline by search phrase or hashtag. In this blog post I explain how I managed to">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/hero.png">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/twitter-collection-feeder.gif">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/embed-collection.gif">
+<meta property="og:image" content="https://developerschallenges.com/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/twitter-publish.gif">
+<meta property="article:published_time" content="2020-12-27T23:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-28T21:06:25.145Z">
+<meta property="article:author" content="Dalibor Mesarić">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="twitter">
+<meta property="article:tag" content="api">
+<meta property="article:tag" content="webjob">
+<meta property="article:tag" content="dotnet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developerschallenges.com/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/hero.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#3b8dbd"/>
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="application-name" content="Embed Twitter timeline by search phrase or hashtag | Developer&#39;s Challenges"/>
+  <meta name="msapplication-square70x70logo" content="/ms-icon-70x70.png"/>
+  <meta name="msapplication-square150x150logo" content="/ms-icon-150x150.png"/>
+  <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png"/>
+  <meta name="msapplication-notification" content="frequency=30;polling-uri=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=1;polling-uri2=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=2;polling-uri3=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=3;polling-uri4=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=4;polling-uri5=http://notifications.buildmypinnedsite.com/?feed=https://developerschallenges.com/atom.xml&amp;id=5; cycle=1"/>
+	<meta name="theme-color" content="#3b8dbd">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+<!-- Application Insights -->
+<script type="text/javascript">
+    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+    {
+        instrumentationKey:"2d3346ce-4168-4fbe-b4d9-8953a19cb9fa"
+    }
+    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    </script>
+<!-- End Application Insights -->
+
+    
+
+  
+
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/">Developer&#39;s Challenges</a>
+          </h1>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Blog</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/projects">Projects</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://developerschallenges.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-content">
+              
+  <article id="post-2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Embed Twitter timeline by search phrase or hashtag
+    </h1>
+  
+
+        </header>
+      
+	  
+      <p class="article-byline">
+        <time datetime="2020-12-27T23:00:00.000Z" itemprop="datePublished">2020-12-28</time>
+        
+        
+          <span>&ndash; <a target="_blank" href="https://dalibormesaric.com">Dalibor Mesarić</a></span>
+        
+      </p>
+	  
+      <div class="article-entry" itemprop="articleBody">
+        <p><img src="/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/hero.png" alt="Embed Twitter timeline by search phrase or hashtag"></p>
+<p>Over the years Twitter transformed quite a bit, so it is not really possible to use the official way of embedding a timeline by search phrase or hashtag. In this blog post I explain how I managed to create a workaround using collections.</p>
+<a id="more"></a>
+
+<hr>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>During 2018 <a target="_blank" rel="noopener" href="https://twitter.com/twitterdev/status/977248277279182848">Twitter retired their widget platform</a> and with that the ability to embed search timelines. They proposed a replacement using collections, so here is my solution.</p>
+<h2 id="Official-way-of-embedding-a-timeline"><a href="#Official-way-of-embedding-a-timeline" class="headerlink" title="Official way of embedding a timeline"></a>Official way of embedding a timeline</h2><p>Both Twitter <a target="_blank" rel="noopener" href="https://help.twitter.com/en/using-twitter/embed-twitter-feed">Help Center</a> and <a target="_blank" rel="noopener" href="https://developer.twitter.com/en/docs/twitter-for-websites/timelines/overview">Developer Documentation</a> point to use <a target="_blank" rel="noopener" href="https://publish.twitter.com/">Twitter Publish</a> as the official way of embedding a timeline.</p>
+<p>As a replacement for the ability to embed search timelines, they <a target="_blank" rel="noopener" href="https://twittercommunity.com/t/deprecating-widget-settings/102295">officially suggested to use the collection timeline</a>.</p>
+<p>So what is collection timeline?</p>
+<blockquote>
+<p>A collection timeline displays Tweets curated by a Twitter user in their chosen display order. You can create collections using TweetDeck, or via the API.</p>
+</blockquote>
+<p>In other words you get to choose which tweets go in a collection. You can do this manually in TweetDeck or programmatically.</p>
+<h2 id="TweetDeck-Collections"><a href="#TweetDeck-Collections" class="headerlink" title="TweetDeck Collections"></a>TweetDeck Collections</h2><p>A part from the main site, <a target="_blank" rel="noopener" href="https://twitter.com/">Twitter</a> also has a <em>pro</em> oriented <a target="_blank" rel="noopener" href="https://tweetdeck.twitter.com/">TweetDeck</a> application.</p>
+<p>To support my solution, I created a new collection in TweetDeck. You can do this from the left menu by clicking on <code>Add column</code>, and choosing <code>Collections</code> in the modal. Give your collection a name, and it will show up as a new column in TweetDeck.</p>
+<p>Next step is optional, but in order to try out this solution, you can click on <code>Add column</code> again, and choose <code>Search</code>. In the search field type search phrase or hashtag, you want to have in your embed timeline. For demonstration purposes I chose <code>#azure</code>. Now you will see latest tweets with that search phrase. You can manually move tweets from the search column to the collection column.</p>
+<h2 id="Moving-tweets-to-collection-programmatically"><a href="#Moving-tweets-to-collection-programmatically" class="headerlink" title="Moving tweets to collection programmatically"></a>Moving tweets to collection programmatically</h2><p>Back in 2018 I wrote a small application based on <a target="_blank" rel="noopener" href="https://coretweet.github.io/">CoreTweet</a> to do this programmatically. In my solution I used <a target="_blank" rel="noopener" href="https://developer.twitter.com/en/products/twitter-api">Twitter API</a> to move tweets to collection. Source code is available at <a target="_blank" rel="noopener" href="https://github.com/dalibormesaric/TwitterCollectionFeeder">github.com/dalibormesaric/TwitterCollectionFeeder</a>.</p>
+<p>In order to use this or your own solution, you will need to apply for a <a target="_blank" rel="noopener" href="https://developer.twitter.com/">Twitter Developer</a> account and choose <code>Create an app</code>.</p>
+<p>My application has the following requirements in its <code>appsettings.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;consumerKey&quot;: &quot;consumerKey&quot;,</span><br><span class="line">    &quot;consumerSecret&quot;: &quot;consumerSecret&quot;,</span><br><span class="line">    &quot;accessToken&quot;: &quot;accessToken&quot;,</span><br><span class="line">    &quot;accessSecret&quot;: &quot;accessSecret&quot;,</span><br><span class="line">    &quot;searchPhrase&quot;: &quot;searchPhrase&quot;,</span><br><span class="line">    &quot;collectionName&quot;: &quot;collectionName&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>where <code>collectionName</code> is name of the collection column from the previous step, and <code>searchPhrase</code> can be your hashtag. See it in action running locally here</p>
+<p><img src="/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/twitter-collection-feeder.gif" alt="TwitterCollectionFeeder"></p>
+<p>Just something to keep in mind - this year Twitter <a target="_blank" rel="noopener" href="https://blog.twitter.com/developer/en_us/topics/tools/2020/introducing_new_twitter_api.html">announced</a> new API v2 which is still in Early Access and will eventually replace v1.1 which is used in my solution. I’m not sure if this will introduce some new API constraints.</p>
+<p>There are number of options available for you to run this as a background task. I used both <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/app-service/webjobs-create">Azure App Service WebJob</a> and <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview">Azure Functions</a>, but you can use anything really.</p>
+<h2 id="Embedding-Collection"><a href="#Embedding-Collection" class="headerlink" title="Embedding Collection"></a>Embedding Collection</h2><p>Final step is to move collection from TweetDeck back to Twitter Publish. To do this, click on your collection column settings and click on <code>Share</code> and <code>Embed Collection</code>.</p>
+<p><img src="/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/embed-collection.gif" alt="Embed Collection"></p>
+<p>This will take you to Twitter Publish where you can preview your collection and copy the embed code to use on your web site.</p>
+<p><img src="/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/twitter-publish.gif" alt="Twitter Publish"></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>At the end you have a Twitter styled timeline without going through some 3rd party tool. If you are going to embed something on your site, it should come from a trusted source.</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="https://developerschallenges.com/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" data-id="ckj923pji006g1ksr8m549hcf" class="article-share-link">Share</a>
+        
+          <a href="https://developerschallenges.com/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/api/" rel="tag">api</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dotnet/" rel="tag">dotnet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/twitter/" rel="tag">twitter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webjob/" rel="tag">webjob</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <div class="sidebar-top">
+    <p>social</p>
+    <ul class="social-links">
+      
+        <li>
+          <a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric">
+            <i id="icon-LinkedIn" class="icon"></i>LinkedIn
+          </a>
+        </li>
+      
+        <li>
+          <a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric">
+            <i id="icon-Twitter" class="icon"></i>Twitter
+          </a>
+        </li>
+      
+        <li>
+          <a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric">
+            <i id="icon-GitHub" class="icon"></i>GitHub
+          </a>
+        </li>
+      
+        <li>
+          <a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric">
+            <i id="icon-Gist" class="icon"></i>Gist
+          </a>
+        </li>
+      
+        <li>
+          <a class="social-tooltip" title="RSS" href="/atom.xml">
+            <i id="icon-RSS" class="icon"></i>RSS
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/25/run-go-application-in-azure-container-instance/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Run Go application in Azure Container Instance</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+  
+</nav>
+
+  
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">recent articles</h3>
+    <div class="widget">
+      <ul id="recent-post">
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/hero.png
+)" title="Embed Twitter timeline by search phrase or hashtag" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="title">Embed Twitter timeline by search phrase or hashtag</a></p>
+              <p class="item-date"><time datetime="2020-12-27T23:00:00.000Z" itemprop="datePublished">2020-12-28</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/10/25/run-go-application-in-azure-container-instance/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-10-25-run-go-application-in-azure-container-instance/hero.png
+)" title="Run Go application in Azure Container Instance" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/10/25/run-go-application-in-azure-container-instance/" class="title">Run Go application in Azure Container Instance</a></p>
+              <p class="item-date"><time datetime="2020-10-24T22:00:00.000Z" itemprop="datePublished">2020-10-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-08-23-the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/hero.png
+)" title="The best way to send files from iPhone to Windows PC over local network" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/08/23/the-best-way-to-send-files-from-iphone-to-windows-pc-over-local-network/" class="title">The best way to send files from iPhone to Windows PC over local network</a></p>
+              <p class="item-date"><time datetime="2020-08-22T22:00:00.000Z" itemprop="datePublished">2020-08-23</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/07/27/re-discover-your-inner-programmer-with-f-in-three-steps/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-07-27-re-discover-your-inner-programmer-with-f-in-three-steps/hero.png
+)" title="Re-discover your inner programmer with F# in three steps" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/07/27/re-discover-your-inner-programmer-with-f-in-three-steps/" class="title">Re-discover your inner programmer with F# in three steps</a></p>
+              <p class="item-date"><time datetime="2020-07-26T22:00:00.000Z" itemprop="datePublished">2020-07-27</time></p>
+            </div>
+          </li>
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-02-16-adding-application-insights-to-my-blog-one-week-aftermath/hero.png
+)" title="Adding Application Insights to my blog - one week aftermath" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="title">Adding Application Insights to my blog - one week aftermath</a></p>
+              <p class="item-date"><time datetime="2020-02-15T23:00:00.000Z" itemprop="datePublished">2020-02-16</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <div class="credit">
+        <p class="logo-wrap">
+          <a href="/">Developer&#39;s Challenges</a>
+        </p>
+        <p>&copy; 2020 Dalibor Mesarić</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'developerschallenges';
+  
+  var disqus_url = 'https://developerschallenges.com/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

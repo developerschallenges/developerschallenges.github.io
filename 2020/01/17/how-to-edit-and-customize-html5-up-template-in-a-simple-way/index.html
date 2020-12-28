@@ -69,7 +69,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
 </head>
 
 <body>
@@ -148,13 +148,10 @@
 <p>I installed the <a target="_blank" rel="noopener" href="https://ritwickdey.github.io/vscode-live-sass-compiler/">Live Sass Compiler</a> extension in order to get the Sass compilation working without having to configure any command line tooling.</p>
 <p>Live Sass Compiler requires some configuration in <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/getstarted/settings">Visual Studio Code settings</a>. You want to modify your workspace settings that will live together with the project in <code>.vscode/settings.json</code>. I added the following in my settings</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;liveSassCompile.settings.formats&quot;:[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;format&quot;</span>: <span class="string">&quot;expanded&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;extensionName&quot;</span>: <span class="string">&quot;.css&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;savePath&quot;</span>: <span class="string">&quot;~/../css&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">],</span><br><span class="line">&quot;liveSassCompile.settings.generateMap&quot;: false,</span><br><span class="line">&quot;liveSassCompile.settings.autoprefix&quot;: [</span><br><span class="line">    &quot;&gt; 1%&quot;,</span><br><span class="line">    <span class="string">&quot;last 2 versions&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
 <p>As a final change to fix the compilation error, I had to line <code>6</code> in <code>main.scss</code> from</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &#39;fontawesome-all.min.css&#39;;</span><br></pre></td></tr></table></figure>
-
 <p>to</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import url(&#39;fontawesome-all.min.css&#39;);</span><br></pre></td></tr></table></figure>
-
 <p>As a bonus for using Live Sass Compiler, you get a Live Reload extension as well. At the bottom of Visual Studio Code, in the Status Bar, you will see two buttons. <code>Watch Sass</code> will trigger css generation after you save any Sass files, and <code>Go Live</code> will start a web server for your page.</p>
 <img src="/images/posts/2020-01-17-how-to-edit-and-customize-html5-up-template-in-a-simple-way/extension_buttons.png">
 
@@ -164,7 +161,7 @@
 
       </div>
       <footer class="article-footer">
-        <a data-url="https://developerschallenges.com/2020/01/17/how-to-edit-and-customize-html5-up-template-in-a-simple-way/" data-id="ckh5xncsd001hdcsrh8646shs" class="article-share-link">Share</a>
+        <a data-url="https://developerschallenges.com/2020/01/17/how-to-edit-and-customize-html5-up-template-in-a-simple-way/" data-id="ckj923pip001d1ksr0way3lq7" class="article-share-link">Share</a>
         
           <a href="https://developerschallenges.com/2020/01/17/how-to-edit-and-customize-html5-up-template-in-a-simple-way/#comments" class="article-comment-link">Comments</a>
         
@@ -190,15 +187,35 @@
     <p>social</p>
     <ul class="social-links">
       
-        <li><a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric"><i id="icon-LinkedIn" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="LinkedIn" target="_blank" rel="noopener" href="https://linkedin.com/in/dalibormesaric">
+            <i id="icon-LinkedIn" class="icon"></i>LinkedIn
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric"><i id="icon-Twitter" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/dalibormesaric">
+            <i id="icon-Twitter" class="icon"></i>Twitter
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric"><i id="icon-GitHub" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="GitHub" target="_blank" rel="noopener" href="https://github.com/dalibormesaric">
+            <i id="icon-GitHub" class="icon"></i>GitHub
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric"><i id="icon-Gist" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="Gist" target="_blank" rel="noopener" href="https://gist.github.com/dalibormesaric">
+            <i id="icon-Gist" class="icon"></i>Gist
+          </a>
+        </li>
       
-        <li><a class="social-tooltip" title="RSS" href="/atom.xml"><i id="icon-RSS" class="icon"></i></a></li>
+        <li>
+          <a class="social-tooltip" title="RSS" href="/atom.xml">
+            <i id="icon-RSS" class="icon"></i>RSS
+          </a>
+        </li>
       
     </ul>
   </div>
@@ -230,6 +247,23 @@
     <h3 class="widget-title">recent articles</h3>
     <div class="widget">
       <ul id="recent-post">
+        
+          <li>
+            <div class="item-thumbnail">
+              <a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="thumbnail">
+  
+    <span style="background-image:url(/images/posts/2020-12-28-embed-twitter-timeline-by-search-phrase-or-hashtag/hero.png
+)" title="Embed Twitter timeline by search phrase or hashtag" class="thumbnail-image"></span>
+  
+
+</a>
+            </div>
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/" class="title">Embed Twitter timeline by search phrase or hashtag</a></p>
+              <p class="item-date"><time datetime="2020-12-27T23:00:00.000Z" itemprop="datePublished">2020-12-28</time></p>
+            </div>
+          </li>
         
           <li>
             <div class="item-thumbnail">
@@ -296,23 +330,6 @@
               <p class="item-category"></p>
               <p class="item-title"><a href="/2020/02/16/adding-application-insights-to-my-blog-one-week-aftermath/" class="title">Adding Application Insights to my blog - one week aftermath</a></p>
               <p class="item-date"><time datetime="2020-02-15T23:00:00.000Z" itemprop="datePublished">2020-02-16</time></p>
-            </div>
-          </li>
-        
-          <li>
-            <div class="item-thumbnail">
-              <a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="thumbnail">
-  
-    <span style="background-image:url(/images/posts/2020-02-09-get-your-most-visited-pages-in-a-serverless-way/hero.png
-)" title="Get your most visited pages in a serverless way" class="thumbnail-image"></span>
-  
-
-</a>
-            </div>
-            <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2020/02/09/get-your-most-visited-pages-in-a-serverless-way/" class="title">Get your most visited pages in a serverless way</a></p>
-              <p class="item-date"><time datetime="2020-02-08T23:00:00.000Z" itemprop="datePublished">2020-02-09</time></p>
             </div>
           </li>
         
