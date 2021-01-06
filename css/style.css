@@ -1763,6 +1763,9 @@ i.icon:before {
 #icon-Gist:before {
   content: "\f113";
 }
+#icon-search:before {
+  content: "\f002";
+}
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   .article-entry .img-wrap:before {
     background: url("images/preloader@2x.gif") center center no-repeat, rgba(0,0,0,0.9);
