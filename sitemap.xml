@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://developerschallenges.com/search/</loc>
+    
+    <lastmod>2021-01-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://developerschallenges.com/2016/09/25/ux-rant-september-2016-edition/</loc>
     
     <lastmod>2021-01-07</lastmod>
@@ -10,13 +17,6 @@
   
   <url>
     <loc>https://developerschallenges.com/2020/12/28/embed-twitter-timeline-by-search-phrase-or-hashtag/</loc>
-    
-    <lastmod>2021-01-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/search/</loc>
     
     <lastmod>2021-01-06</lastmod>
     
@@ -249,7 +249,7 @@
 
   <url>
     <loc>https://developerschallenges.com/</loc>
-    <lastmod>2021-01-07</lastmod>
+    <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
