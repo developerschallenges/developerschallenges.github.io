@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://developerschallenges.com/publishnotifier/</loc>
+    <loc>https://developerschallenges.com/search/</loc>
     
-    <lastmod>2021-01-12</lastmod>
+    <lastmod>2021-03-12</lastmod>
     
   </url>
   
   <url>
-    <loc>https://developerschallenges.com/search/</loc>
+    <loc>https://developerschallenges.com/publishnotifier/</loc>
     
-    <lastmod>2021-01-08</lastmod>
+    <lastmod>2021-01-12</lastmod>
     
   </url>
   
@@ -249,7 +249,7 @@
 
   <url>
     <loc>https://developerschallenges.com/</loc>
-    <lastmod>2021-01-12</lastmod>
+    <lastmod>2021-03-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
