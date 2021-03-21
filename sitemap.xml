@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://developerschallenges.com/2020/10/25/run-go-application-in-azure-container-instance/</loc>
+    
+    <lastmod>2021-03-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/</loc>
+    
+    <lastmod>2021-03-13</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://developerschallenges.com/search/</loc>
     
     <lastmod>2021-03-12</lastmod>
@@ -58,13 +72,6 @@
   </url>
   
   <url>
-    <loc>https://developerschallenges.com/2020/10/25/run-go-application-in-azure-container-instance/</loc>
-    
-    <lastmod>2020-10-31</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://developerschallenges.com/2020/01/25/how-to-combine-custom-async-availity-reactstrap-validation-with-onchange-attribute-saving-value-to-a-usestate-hook/</loc>
     
     <lastmod>2020-10-31</lastmod>
@@ -115,13 +122,6 @@
   
   <url>
     <loc>https://developerschallenges.com/2016/12/11/episerver-certification/</loc>
-    
-    <lastmod>2020-10-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/</loc>
     
     <lastmod>2020-10-31</lastmod>
     
@@ -249,7 +249,7 @@
 
   <url>
     <loc>https://developerschallenges.com/</loc>
-    <lastmod>2021-03-12</lastmod>
+    <lastmod>2021-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

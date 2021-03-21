@@ -68,7 +68,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
 </head>
 
 <body>
@@ -141,7 +141,7 @@
         <img src="/images/posts/2017-11-30-stop-looking-at-ads-with-pi-hole/pi-hole.png">
 
 <p>Quickly set up Pi-hole on Raspberry Pi and get rid of ads on all devices in your home!</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <hr>
 <p>In countries where Black Friday is a thing, I think everyone spent a good part of their day just looking through all the deals. This year I finally bought a Raspberry Pi. Two actually.</p>
@@ -152,22 +152,27 @@
 <p>Next step was getting the image on the SD card. I’m using macOS and I followed <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/installation/installing-images/mac.md">the official tutorial</a>.</p>
 <p>This was the command I ran after unmounting SD card with the Disk Utility.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd bs&#x3D;1m if&#x3D;2017-09-07-raspbian-stretch-lite.img of&#x3D;&#x2F;dev&#x2F;rdisk2 conv&#x3D;sync</span><br></pre></td></tr></table></figure>
+
 <p>Next, in Terminal I ran the following commands.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;</span><br><span class="line">cd Volumes&#x2F;boot</span><br><span class="line">touch ssh</span><br><span class="line">touch wpa_supplicant.conf</span><br><span class="line">nano wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
+
 <p>Here I used nano to open the file and pasted in the <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/forums/viewtopic.php?t=191252">following</a>.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">country&#x3D;US</span><br><span class="line">ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev</span><br><span class="line">update_config&#x3D;1</span><br><span class="line"></span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">    ssid&#x3D;&quot;your_real_wifi_ssid&quot;</span><br><span class="line">    scan_ssid&#x3D;1</span><br><span class="line">    psk&#x3D;&quot;your_real_password&quot;</span><br><span class="line">    key_mgmt&#x3D;WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>After this I ejected the SD card, inserted it in Raspberry Pi and plugged it in!</p>
 <p>Next step was to find the ip address assigned to the Raspberry Pi, and I found the easiest way to see this is on the router.</p>
 <p>Using that ip address I connected to the Raspberry Pi from Terminal. To connect on Windows you can use <a target="_blank" rel="noopener" href="http://www.putty.org/">Putty</a>.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh pi@IP_ADDRESS</span><br></pre></td></tr></table></figure>
+
 <p>Default password is <em>raspberry</em></p>
 <p>You can change the default password by typing in</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+
 <p>As the final step, I ran the command from the <a target="_blank" rel="noopener" href="https://pi-hole.net/">official page</a>. Following the instruction was pretty straightforward and I’m surfing without ads on all devices!</p>
 <img src="/images/posts/2017-11-30-stop-looking-at-ads-with-pi-hole/raspberry_pi_live.jpg">
       </div>
       <footer class="article-footer">
-        <a data-url="https://developerschallenges.com/2017/11/30/stop-looking-at-ads-with-pi-hole/" data-id="ckm6iomlu000t14srgnyy1yko" class="article-share-link">Share</a>
+        <a data-url="https://developerschallenges.com/2017/11/30/stop-looking-at-ads-with-pi-hole/" data-id="ckmjbhfbf001d6osr6uw151kq" class="article-share-link">Share</a>
         
           <a href="https://developerschallenges.com/2017/11/30/stop-looking-at-ads-with-pi-hole/#comments" class="article-comment-link">Comments</a>
         

@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://developerschallenges.com/images/posts/2017-04-22-episerver-how-to-get-title-in-all-properties-view/2017-04-22-episerver-how-to-get-title-in-all-properties-view.png">
 <meta property="og:image" content="https://developerschallenges.com/images/posts/2017-04-22-episerver-how-to-get-title-in-all-properties-view/logotype.png">
 <meta property="article:published_time" content="2017-04-21T22:00:00.000Z">
-<meta property="article:modified_time" content="2020-10-31T15:14:32.531Z">
+<meta property="article:modified_time" content="2021-03-13T16:47:22.774Z">
 <meta property="article:author" content="Dalibor Mesarić">
 <meta property="article:tag" content="episerver">
 <meta property="article:tag" content="tips">
@@ -68,7 +68,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
 </head>
 
 <body>
@@ -141,7 +141,7 @@
         <img src="/images/posts/2017-04-22-episerver-how-to-get-title-in-all-properties-view/2017-04-22-episerver-how-to-get-title-in-all-properties-view.png">
 
 <p>In this article I will describe how to group properties and get a title above them. This will enable some other useful features as well.</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <hr>
 <p>As I fairly reacently started using Episerver, I started where I think everyone starts these days - the Alloy demo. I saw a nicely grouped Logotype section, with a title and some property fields. I wanted to use the same grouping for the properties I was building for my block, but it was just not obvious where was this coming from.</p>
@@ -152,16 +152,18 @@
 <p>Following the <a target="_blank" rel="noopener" href="http://world.episerver.com/documentation/developer-guides/CMS/getting-started/creating-your-project/">Episerver Getting started</a> tutorial you can create a clean Episerver project to try this out.</p>
 <p>Add a new block:</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">ContentType(</span></span><br><span class="line"><span class="meta">    DisplayName = <span class="meta-string">&quot;PetBlock&quot;</span>,</span></span><br><span class="line"><span class="meta">    GUID = <span class="meta-string">&quot;ebbdbefb-b0e1-40fd-a13e-f408c16ee1fd&quot;</span>,</span></span><br><span class="line"><span class="meta">    Description = <span class="meta-string">&quot;&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PetBlock</span> : <span class="title">BlockData</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">CultureSpecific</span>]</span><br><span class="line">    [<span class="meta">Display(</span></span><br><span class="line"><span class="meta">        Name = <span class="meta-string">&quot;Name&quot;</span>,</span></span><br><span class="line"><span class="meta">        Description = <span class="meta-string">&quot;Name field&#x27;s description&quot;</span>,</span></span><br><span class="line"><span class="meta">        GroupName = SystemTabNames.Content,</span></span><br><span class="line"><span class="meta">        Order = 1)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>And add it to your <code>StartPage</code> page model:</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">ContentType(</span></span><br><span class="line"><span class="meta">    DisplayName = <span class="meta-string">&quot;StartPage&quot;</span>,</span></span><br><span class="line"><span class="meta">    GUID = <span class="meta-string">&quot;8205d905-b467-4d0c-ae2c-391d0640456a&quot;</span>,</span></span><br><span class="line"><span class="meta">    Description = <span class="meta-string">&quot;&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StartPage</span> : <span class="title">PageData</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Display(</span></span><br><span class="line"><span class="meta">        Name = <span class="meta-string">&quot;Pet&quot;</span>,</span></span><br><span class="line"><span class="meta">        GroupName = SystemTabNames.Content,</span></span><br><span class="line"><span class="meta">        Order = 5)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> PetBlock PetBlock &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>And there you have it! Whatever is you set the <code>Name</code> property to in the <code>Display</code> attribute, that will be your title in the all properties view!</p>
+
+<p>And there you have it! Whatever you set the <code>Name</code> property to in the <code>Display</code> attribute, that will be your title in the all properties view!</p>
 <p>Using blocks as properties is what allowed me to make an interseting feature i will describe in one of the future blog posts.</p>
 <hr>
 <p><em>To take screenshots I use <a target="_blank" rel="noopener" href="https://app.prntscr.com/">LightShot</a></em></p>
 
       </div>
       <footer class="article-footer">
-        <a data-url="https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/" data-id="ckm6iomls000o14sr63m18zc1" class="article-share-link">Share</a>
+        <a data-url="https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/" data-id="ckmjbhfbd001a6osr1kq011bt" class="article-share-link">Share</a>
         
           <a href="https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/#comments" class="article-comment-link">Comments</a>
         
