@@ -6,7 +6,7 @@
   <link href="https://developerschallenges.com/atom.xml" rel="self"/>
   
   <link href="https://developerschallenges.com/"/>
-  <updated>2021-03-22T09:52:35.565Z</updated>
+  <updated>2021-03-22T10:06:32.613Z</updated>
   <id>https://developerschallenges.com/</id>
   
   <author>
@@ -21,12 +21,12 @@
     <link href="https://developerschallenges.com/2021/03/22/improving-search-experience-on-static-blog-site-with-azure-functions-and-azure-cognitive-search/"/>
     <id>https://developerschallenges.com/2021/03/22/improving-search-experience-on-static-blog-site-with-azure-functions-and-azure-cognitive-search/</id>
     <published>2021-03-21T23:00:00.000Z</published>
-    <updated>2021-03-22T09:52:35.565Z</updated>
+    <updated>2021-03-22T10:06:32.613Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="/images/posts/2021-03-22-improving-search-experience-on-static-blog-site-with-azure-functions-and-azure-cognitive-search/hero.png" alt="Embed Twitter timeline by search phrase or hashtag"></p><p>I wanted to move away from the default google search that came with my blog theme for a while now. Finally, I found time and some solutions I can build upon to do this in a nice way.</p><span id="more"></span><hr><p>Even though the Hexo theme I’m using <a href="https://github.com/ppoffice/hexo-theme-hueman/wiki/Search">offers some search options</a>, I didn’t like any of them. I really like the <a href="/tags/jamstack/">#jamstack</a> movement, and I’m exploring <a href="/tags/serverless/">#serveless</a> options in azure so I wanted to do something with those technologies. I stumbled upon this <a href="https://devblogs.microsoft.com/azure-sdk/search-app-with-cognitive-search/">pretty recent solution</a> built with React, Azure Functions and Azure Cognitive Search. This was a perfect starting point since I also used Azure Cognitive Search in the past to build the <a href="https://github.com/ActiveSolution/CognitiveCMS">Cognitive CMS</a> project, so I know how powerful it is.</p><blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">As I&#39;m exploring some <a href="https://twitter.com/hashtag/jamstack?src=hash&amp;ref_src=twsrc%5Etfw">#jamstack</a> and <a href="https://twitter.com/hashtag/serverless?src=hash&amp;ref_src=twsrc%5Etfw">#serverless</a> options on <a href="https://twitter.com/hashtag/azure?src=hash&amp;ref_src=twsrc%5Etfw">#azure</a>, I added Azure Cognitive Search to by static blog site <a href="https://t.co/7Sn9YfDeyZ">https://t.co/7Sn9YfDeyZ</a></p>&mdash; Dalibor Mesarić (@dalibormesaric) <a href="https://twitter.com/dalibormesaric/status/1346836317448114176?ref_src=twsrc%5Etfw">January 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>What was missing was a quick way to add all my blog posts to Azure Cognitive Search. Luckily there is a <a href="https://github.com/artchen/hexo-azuresearch">hexo-azuresearch plugin available</a> with more details explained in the <a href="https://artifact.me/universal-search-5-azure-search/">accompanied blog post</a>.</p><p>After installing the plugin and running <code>hexo azuresearch</code> all of my blog posts were added to the Azure Cognitive Search Index and I was able to explore and query the index with the official <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch">Azure Cognitive Search Visual Studio Code Extension</a>.</p><p><img src="/images/posts/2021-03-22-improving-search-experience-on-static-blog-site-with-azure-functions-and-azure-cognitive-search/acs-vscode-extension.png" alt="Azure Cognitive Search Visual Studio Code Extension"></p><p>You can see the end result by trying out search in the header or clicking <a href="/search">here</a>.</p><p>In the process I made two small pull requests</p><ul><li><a href="https://github.com/dereklegenzoff/azure-search-react-template/pull/21">https://github.com/dereklegenzoff/azure-search-react-template/pull/21</a></li><li><a href="https://github.com/artchen/hexo-azuresearch/pull/8">https://github.com/artchen/hexo-azuresearch/pull/8</a></li></ul><p>And I made my solutions open source</p><ul><li><a href="https://github.com/developerschallenges/search-api">https://github.com/&#8203;developerschallenges/search-api</a></li><li><a href="https://github.com/developerschallenges/search-client">https://github.com/&#8203;developerschallenges/search-client</a></li></ul><p>I plan to use this stack in the future to build even more solutions, but until then I hope this shows how powerful it can be to add these serverless features like Azure Cognitive Search to a static web site.</p>]]></content>
+    <content type="html"><![CDATA[<p><img src="/images/posts/2021-03-22-improving-search-experience-on-static-blog-site-with-azure-functions-and-azure-cognitive-search/hero.png" alt="Improving search experience on static blog site with Azure Functions and Azure Cognitive Search"></p><p>I wanted to move away from the default google search that came with my blog theme for a while now. Finally, I found time and some solutions I can build upon to do this in a nice way.</p><span id="more"></span><hr><p>Even though the Hexo theme I’m using <a href="https://github.com/ppoffice/hexo-theme-hueman/wiki/Search">offers some search options</a>, I didn’t like any of them. I really like the <a href="/tags/jamstack/">#jamstack</a> movement, and I’m exploring <a href="/tags/serverless/">#serveless</a> options in azure so I wanted to do something with those technologies. I stumbled upon this <a href="https://devblogs.microsoft.com/azure-sdk/search-app-with-cognitive-search/">pretty recent solution</a> built with React, Azure Functions and Azure Cognitive Search. This was a perfect starting point since I also used Azure Cognitive Search in the past to build the <a href="https://github.com/ActiveSolution/CognitiveCMS">Cognitive CMS</a> project, so I know how powerful it is.</p><blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">As I&#39;m exploring some <a href="https://twitter.com/hashtag/jamstack?src=hash&amp;ref_src=twsrc%5Etfw">#jamstack</a> and <a href="https://twitter.com/hashtag/serverless?src=hash&amp;ref_src=twsrc%5Etfw">#serverless</a> options on <a href="https://twitter.com/hashtag/azure?src=hash&amp;ref_src=twsrc%5Etfw">#azure</a>, I added Azure Cognitive Search to by static blog site <a href="https://t.co/7Sn9YfDeyZ">https://t.co/7Sn9YfDeyZ</a></p>&mdash; Dalibor Mesarić (@dalibormesaric) <a href="https://twitter.com/dalibormesaric/status/1346836317448114176?ref_src=twsrc%5Etfw">January 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><p>What was missing was a quick way to add all my blog posts to Azure Cognitive Search. Luckily there is a <a href="https://github.com/artchen/hexo-azuresearch">hexo-azuresearch plugin available</a> with more details explained in the <a href="https://artifact.me/universal-search-5-azure-search/">accompanied blog post</a>.</p><p>After installing the plugin and running <code>hexo azuresearch</code> all of my blog posts were added to the Azure Cognitive Search Index and I was able to explore and query the index with the official <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch">Azure Cognitive Search Visual Studio Code Extension</a>.</p><p><img src="/images/posts/2021-03-22-improving-search-experience-on-static-blog-site-with-azure-functions-and-azure-cognitive-search/acs-vscode-extension.png" alt="Azure Cognitive Search Visual Studio Code Extension"></p><p>You can see the end result by trying out search in the header or clicking <a href="/search">here</a>.</p><p>In the process I made two small pull requests</p><ul><li><a href="https://github.com/dereklegenzoff/azure-search-react-template/pull/21">https://github.com/dereklegenzoff/azure-search-react-template/pull/21</a></li><li><a href="https://github.com/artchen/hexo-azuresearch/pull/8">https://github.com/artchen/hexo-azuresearch/pull/8</a></li></ul><p>And I made my solutions open source</p><ul><li><a href="https://github.com/developerschallenges/search-api">https://github.com/&#8203;developerschallenges/search-api</a></li><li><a href="https://github.com/developerschallenges/search-client">https://github.com/&#8203;developerschallenges/search-client</a></li></ul><p>I plan to use this stack in the future to build even more solutions, but until then I hope this shows how powerful it can be to add these serverless features like Azure Cognitive Search to a static web site.</p>]]></content>
     
     
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/2021-03-22-improving-search-experience-on-static-blog-site-with-azure-functions-and-azure-cognitive-search/hero.png&quot; alt=&quot;Embed Twitter timeline by search phrase or hashtag&quot;&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/posts/2021-03-22-improving-search-experience-on-static-blog-site-with-azure-functions-and-azure-cognitive-search/hero.png&quot; alt=&quot;Improving search experience on static blog site with Azure Functions and Azure Cognitive Search&quot;&gt;&lt;/p&gt;
 &lt;p&gt;I wanted to move away from the default google search that came with my blog theme for a while now. Finally, I found time and some solutions I can build upon to do this in a nice way.&lt;/p&gt;</summary>
     
     
@@ -317,9 +317,9 @@
     
     
     
-    <category term="conference" scheme="https://developerschallenges.com/tags/conference/"/>
-    
     <category term="ndc" scheme="https://developerschallenges.com/tags/ndc/"/>
+    
+    <category term="conference" scheme="https://developerschallenges.com/tags/conference/"/>
     
   </entry>
   
@@ -511,8 +511,6 @@
     
     
     
-    <category term="twitter" scheme="https://developerschallenges.com/tags/twitter/"/>
-    
     <category term="ux" scheme="https://developerschallenges.com/tags/ux/"/>
     
     <category term="rant" scheme="https://developerschallenges.com/tags/rant/"/>
@@ -520,6 +518,8 @@
     <category term="google" scheme="https://developerschallenges.com/tags/google/"/>
     
     <category term="backspace" scheme="https://developerschallenges.com/tags/backspace/"/>
+    
+    <category term="twitter" scheme="https://developerschallenges.com/tags/twitter/"/>
     
     <category term="search" scheme="https://developerschallenges.com/tags/search/"/>
     
@@ -546,9 +546,9 @@
     
     
     
-    <category term="ubuntu" scheme="https://developerschallenges.com/tags/ubuntu/"/>
-    
     <category term="graylog" scheme="https://developerschallenges.com/tags/graylog/"/>
+    
+    <category term="ubuntu" scheme="https://developerschallenges.com/tags/ubuntu/"/>
     
     <category term="hyper-v" scheme="https://developerschallenges.com/tags/hyper-v/"/>
     
@@ -574,9 +574,9 @@
     
     
     
-    <category term="azure" scheme="https://developerschallenges.com/tags/azure/"/>
-    
     <category term="windows phone" scheme="https://developerschallenges.com/tags/windows-phone/"/>
+    
+    <category term="azure" scheme="https://developerschallenges.com/tags/azure/"/>
     
     <category term="azure sql" scheme="https://developerschallenges.com/tags/azure-sql/"/>
     
@@ -624,13 +624,13 @@
     
     
     
-    <category term="azure" scheme="https://developerschallenges.com/tags/azure/"/>
-    
     <category term="design" scheme="https://developerschallenges.com/tags/design/"/>
     
     <category term="testing" scheme="https://developerschallenges.com/tags/testing/"/>
     
     <category term="wczg" scheme="https://developerschallenges.com/tags/wczg/"/>
+    
+    <category term="azure" scheme="https://developerschallenges.com/tags/azure/"/>
     
     <category term="html" scheme="https://developerschallenges.com/tags/html/"/>
     
