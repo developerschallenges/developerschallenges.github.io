@@ -70,7 +70,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
 </head>
 
 <body>
@@ -146,14 +146,14 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><a target="_blank" rel="noopener" href="https://www.graylog.org/">Graylog</a> is a log management tool that I first discovered a couple of years ago. I appreciate logging and monitoring while developing software for both capturing errors and seeing if anyone is actually using/testing the features you implemented. Having a centralized log management tool is very convenient to have an entire team aware of what is going on in software projects. Graylog is easy to set up and it has a nice dashboard with a powerful way of querying logs.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><a target="_blank" rel="noopener" href="https://www.graylog.org/">Graylog</a> is a log management tool that I first discovered a couple of years ago. I appreciate logging and monitoring while developing software for both capturing errors and seeing if anyone is actually using&#x2F;testing the features you implemented. Having a centralized log management tool is very convenient to have an entire team aware of what is going on in software projects. Graylog is easy to set up and it has a nice dashboard with a powerful way of querying logs.</p>
 <p>When I first set up Graylog it was called Graylog2 and it was still in pre-release phase. I knew I want to run an Ubuntu Server instance in an Azure VM. Since I’m a windows developer, setting up all the dependencies through bash is not something I enjoy, but luckily I found a cool script by <a target="_blank" rel="noopener" href="https://twitter.com/mrlesmithjr">@mrlesmithjr</a> on his <a target="_blank" rel="noopener" href="http://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation">blog</a>. The process was pretty straightforward, and in couple of minutes I had Graylog2 running in an Azure VM. After that, all I had to was open the correct port and add GELF log4net provider to my project, and logs started streaming in.</p>
 <p>Two years later, or now, I wanted to do the same thing, but of course the new versions of Graylog and its dependencies came out. So in order to run the latest and greatest I went back to the script I used the first time. Unfortunately, the author stopped the maintenance because he switched to a different way of managing software tools - using <a target="_blank" rel="noopener" href="https://www.ansible.com/">Ansible</a>. This is not something I am interested investing in at the moment. All I wanted was a Graylog server on my Hyper-V VM. How hard can that be?</p>
 <h2 id="Graylog-running-in-Hyper-V"><a href="#Graylog-running-in-Hyper-V" class="headerlink" title="Graylog running in Hyper-V"></a>Graylog running in Hyper-V</h2><p>When you go to the Graylog’s <a target="_blank" rel="noopener" href="https://www.graylog.org/download">download page</a> you get a number of options to choose from. But if you are a .NET developer you’ll see a lot of things you have never heard of. Feel free to explore a bit because you never know what you might find interesting. But to proceed with the mission of running Graylog in Hyper-V, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Open_Virtualization_Format"><strong>OVA</strong></a> is what you want.</p>
 <p><strong>OVA</strong> is an open standard for distributing virtual appliances. When you click the link on Graylog’s download page, you’ll see more details on how to use it inside <a target="_blank" rel="noopener" href="https://www.virtualbox.org/">VirtualBox</a>. You will also need to download VirtualBox in order to create a .VHD disk image that you will use in Hyper-V.</p>
 <p>Quick google search showed me how to get from .OVA to .VHD. You should rename the .OVA extension to .TAR and extract the archive in a folder (e.g. C:\vm).</p>
 <p>After that just run the following command to get the .VHD disk image.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Oracle\VirtualBox&gt;VBoxManage.exe clonehd --format vhd C:\vm\graylog-disk1.vmdk C:\vm\graylog.vhd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\Oracle\VirtualBox&gt;VBoxManage.exe clonehd --format vhd C:\vm\graylog-disk1.vmdk C:\vm\graylog.vhd</span><br></pre></td></tr></table></figure>
 
 <p>As a final step all you need to do is create a new Virtual Machine in Hyper-V, and attach the .VHD file. Make sure your VM has enough RAM (4GB is recommended).</p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>To recap:</p>
@@ -167,7 +167,7 @@
 
       </div>
       <footer class="article-footer">
-        <a data-url="https://developerschallenges.com/2016/06/01/how-to-run-graylog-on-ubuntu-server-in-hyper-v/" data-id="cl8w3d250000dogvb9u9nc5hg" class="article-share-link">Share</a>
+        <a data-url="https://developerschallenges.com/2016/06/01/how-to-run-graylog-on-ubuntu-server-in-hyper-v/" data-id="cl91ei8sq000asgvb7ykg5fqh" class="article-share-link">Share</a>
         
           <a href="https://developerschallenges.com/2016/06/01/how-to-run-graylog-on-ubuntu-server-in-hyper-v/#comments" class="article-comment-link">Comments</a>
         

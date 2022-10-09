@@ -69,7 +69,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Developer's Challenges" type="application/atom+xml">
 </head>
 
 <body>
@@ -149,13 +149,13 @@
 <p>The issue was that styling for those templates is done using Sass, but there is no tooling included with the downloaded files to generate the css files.</p>
 <p>I installed the <a target="_blank" rel="noopener" href="https://ritwickdey.github.io/vscode-live-sass-compiler/">Live Sass Compiler</a> extension in order to get the Sass compilation working without having to configure any command line tooling.</p>
 <p>Live Sass Compiler requires some configuration in <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/getstarted/settings">Visual Studio Code settings</a>. You want to modify your workspace settings that will live together with the project in <code>.vscode/settings.json</code>. I added the following in my settings</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&quot;liveSassCompile.settings.formats&quot;:[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;format&quot;</span>: <span class="string">&quot;expanded&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;extensionName&quot;</span>: <span class="string">&quot;.css&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;savePath&quot;</span>: <span class="string">&quot;~/../css&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">],</span><br><span class="line">&quot;liveSassCompile.settings.generateMap&quot;: false,</span><br><span class="line">&quot;liveSassCompile.settings.autoprefix&quot;: [</span><br><span class="line">    &quot;&gt; 1%&quot;,</span><br><span class="line">    <span class="string">&quot;last 2 versions&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;liveSassCompile.settings.formats&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;expanded&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;extensionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.css&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;savePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;~/../css&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;liveSassCompile.settings.generateMap&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;liveSassCompile.settings.autoprefix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;&gt; 1%&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;last 2 versions&quot;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
 
 <p>As a final change to fix the compilation error, I had to line <code>6</code> in <code>main.scss</code> from</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &#39;fontawesome-all.min.css&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &#x27;fontawesome-all.min.css&#x27;;</span><br></pre></td></tr></table></figure>
 
 <p>to</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import url(&#39;fontawesome-all.min.css&#39;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import url(&#x27;fontawesome-all.min.css&#x27;);</span><br></pre></td></tr></table></figure>
 
 <p>As a bonus for using Live Sass Compiler, you get a Live Reload extension as well. At the bottom of Visual Studio Code, in the Status Bar, you will see two buttons. <code>Watch Sass</code> will trigger css generation after you save any Sass files, and <code>Go Live</code> will start a web server for your page.</p>
 <img src="/images/posts/2020-01-17-how-to-edit-and-customize-html5-up-template-in-a-simple-way/extension_buttons.png">
@@ -166,7 +166,7 @@
 
       </div>
       <footer class="article-footer">
-        <a data-url="https://developerschallenges.com/2020/01/17/how-to-edit-and-customize-html5-up-template-in-a-simple-way/" data-id="cl8w3d25c0017ogvbd1xv1t6t" class="article-share-link">Share</a>
+        <a data-url="https://developerschallenges.com/2020/01/17/how-to-edit-and-customize-html5-up-template-in-a-simple-way/" data-id="cl91ei8t10012sgvb4exhcn1r" class="article-share-link">Share</a>
         
           <a href="https://developerschallenges.com/2020/01/17/how-to-edit-and-customize-html5-up-template-in-a-simple-way/#comments" class="article-comment-link">Comments</a>
         

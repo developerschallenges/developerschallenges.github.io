@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://developerschallenges.com/search/</loc>
+    
+    <lastmod>2022-10-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://developerschallenges.com/2021/03/22/improving-search-experience-on-static-blog-site-with-azure-functions-and-azure-cognitive-search/</loc>
     
     <lastmod>2021-03-22</lastmod>
@@ -23,15 +32,6 @@
     <loc>https://developerschallenges.com/2017/04/22/episerver-how-to-get-title-in-all-properties-view/</loc>
     
     <lastmod>2021-03-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://developerschallenges.com/search/</loc>
-    
-    <lastmod>2021-03-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -328,7 +328,7 @@
 
   <url>
     <loc>https://developerschallenges.com/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
