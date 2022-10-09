@@ -38,11 +38,11 @@
     
     <category term="react" scheme="https://developerschallenges.com/tags/react/"/>
     
-    <category term="functions" scheme="https://developerschallenges.com/tags/functions/"/>
+    <category term="jamstack" scheme="https://developerschallenges.com/tags/jamstack/"/>
     
     <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
     
-    <category term="jamstack" scheme="https://developerschallenges.com/tags/jamstack/"/>
+    <category term="functions" scheme="https://developerschallenges.com/tags/functions/"/>
     
   </entry>
   
@@ -190,11 +190,11 @@
     
     <category term="episerver" scheme="https://developerschallenges.com/tags/episerver/"/>
     
-    <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
-    
     <category term="jamstack" scheme="https://developerschallenges.com/tags/jamstack/"/>
     
     <category term="application insights" scheme="https://developerschallenges.com/tags/application-insights/"/>
+    
+    <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
     
   </entry>
   
@@ -217,11 +217,11 @@
     
     <category term="azure" scheme="https://developerschallenges.com/tags/azure/"/>
     
+    <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
+    
     <category term="storage" scheme="https://developerschallenges.com/tags/storage/"/>
     
     <category term="functions" scheme="https://developerschallenges.com/tags/functions/"/>
-    
-    <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
     
   </entry>
   
@@ -317,9 +317,9 @@
     
     
     
-    <category term="ndc" scheme="https://developerschallenges.com/tags/ndc/"/>
-    
     <category term="conference" scheme="https://developerschallenges.com/tags/conference/"/>
+    
+    <category term="ndc" scheme="https://developerschallenges.com/tags/ndc/"/>
     
   </entry>
   
@@ -511,6 +511,8 @@
     
     
     
+    <category term="twitter" scheme="https://developerschallenges.com/tags/twitter/"/>
+    
     <category term="ux" scheme="https://developerschallenges.com/tags/ux/"/>
     
     <category term="rant" scheme="https://developerschallenges.com/tags/rant/"/>
@@ -518,8 +520,6 @@
     <category term="google" scheme="https://developerschallenges.com/tags/google/"/>
     
     <category term="backspace" scheme="https://developerschallenges.com/tags/backspace/"/>
-    
-    <category term="twitter" scheme="https://developerschallenges.com/tags/twitter/"/>
     
     <category term="search" scheme="https://developerschallenges.com/tags/search/"/>
     
@@ -546,9 +546,9 @@
     
     
     
-    <category term="graylog" scheme="https://developerschallenges.com/tags/graylog/"/>
-    
     <category term="ubuntu" scheme="https://developerschallenges.com/tags/ubuntu/"/>
+    
+    <category term="graylog" scheme="https://developerschallenges.com/tags/graylog/"/>
     
     <category term="hyper-v" scheme="https://developerschallenges.com/tags/hyper-v/"/>
     
@@ -574,9 +574,9 @@
     
     
     
-    <category term="windows phone" scheme="https://developerschallenges.com/tags/windows-phone/"/>
-    
     <category term="azure" scheme="https://developerschallenges.com/tags/azure/"/>
+    
+    <category term="windows phone" scheme="https://developerschallenges.com/tags/windows-phone/"/>
     
     <category term="azure sql" scheme="https://developerschallenges.com/tags/azure-sql/"/>
     
@@ -624,13 +624,13 @@
     
     
     
+    <category term="azure" scheme="https://developerschallenges.com/tags/azure/"/>
+    
     <category term="design" scheme="https://developerschallenges.com/tags/design/"/>
     
     <category term="testing" scheme="https://developerschallenges.com/tags/testing/"/>
     
     <category term="wczg" scheme="https://developerschallenges.com/tags/wczg/"/>
-    
-    <category term="azure" scheme="https://developerschallenges.com/tags/azure/"/>
     
     <category term="html" scheme="https://developerschallenges.com/tags/html/"/>
     
