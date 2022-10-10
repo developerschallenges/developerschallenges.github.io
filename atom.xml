@@ -38,11 +38,11 @@
     
     <category term="react" scheme="https://developerschallenges.com/tags/react/"/>
     
-    <category term="functions" scheme="https://developerschallenges.com/tags/functions/"/>
+    <category term="jamstack" scheme="https://developerschallenges.com/tags/jamstack/"/>
     
     <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
     
-    <category term="jamstack" scheme="https://developerschallenges.com/tags/jamstack/"/>
+    <category term="functions" scheme="https://developerschallenges.com/tags/functions/"/>
     
   </entry>
   
@@ -190,11 +190,11 @@
     
     <category term="episerver" scheme="https://developerschallenges.com/tags/episerver/"/>
     
-    <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
-    
     <category term="jamstack" scheme="https://developerschallenges.com/tags/jamstack/"/>
     
     <category term="application insights" scheme="https://developerschallenges.com/tags/application-insights/"/>
+    
+    <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
     
   </entry>
   
@@ -217,11 +217,11 @@
     
     <category term="azure" scheme="https://developerschallenges.com/tags/azure/"/>
     
+    <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
+    
     <category term="storage" scheme="https://developerschallenges.com/tags/storage/"/>
     
     <category term="functions" scheme="https://developerschallenges.com/tags/functions/"/>
-    
-    <category term="serverless" scheme="https://developerschallenges.com/tags/serverless/"/>
     
   </entry>
   
@@ -340,9 +340,9 @@
     
     
     
-    <category term="tips" scheme="https://developerschallenges.com/tags/tips/"/>
-    
     <category term="certification" scheme="https://developerschallenges.com/tags/certification/"/>
+    
+    <category term="tips" scheme="https://developerschallenges.com/tags/tips/"/>
     
     <category term="microsoft" scheme="https://developerschallenges.com/tags/microsoft/"/>
     
@@ -459,9 +459,9 @@
     
     <category term="episerver" scheme="https://developerschallenges.com/tags/episerver/"/>
     
-    <category term="tips" scheme="https://developerschallenges.com/tags/tips/"/>
-    
     <category term="certification" scheme="https://developerschallenges.com/tags/certification/"/>
+    
+    <category term="tips" scheme="https://developerschallenges.com/tags/tips/"/>
     
   </entry>
   
